@@ -1,0 +1,117 @@
+.tweet-box{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(47,51,54);
+    /* background: rgb(61, 65, 58); */
+    /* position: sticky; */
+}
+.tweet-container{
+    height: fit-content;
+    /* height: 10px; */
+    width: 100%;
+    /* background: wheat; */
+    display: flex;
+    flex-direction: row;
+}
+.info-tweet{
+    display: flex;
+    flex-direction: column;
+    /* justify-content:space-evenly; */
+    /* background: rgb(61, 65, 58); */
+}
+.tweet-container .info-tweet .text-tweet{
+    margin-top: 1em;
+    margin-left: 0.5em;
+    color: #fff;
+}
+.tweet-container .info-tweet h3{
+    margin-top: 1em;
+    margin-left: 0.5em;
+    color: #fff;
+}
+.tweet-container .info-tweet span{
+    margin-top: 1em;
+    margin-left: 0.5em;
+    color: #fff;
+}
+.tweet-container .icons-tweet #icon-topic{
+    margin-top: 1em;
+}
+.tweet-container .icons-tweet #avatar{
+    margin-top: 1em;
+}
+.icons-tweet{
+    display: flex;
+    flex-direction: column;
+    /* background: rgb(214, 171,s 171); */
+}
+.icons-tweet #icon-topic{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: teal;
+    align-self: flex-end;
+}
+.icons-tweet #avatar{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background: rgb(255, 0, 0);
+}
+.info-tweet .bottom-icons-tweet{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    /* background: springgreen; */
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+}
+.reply-icon,.retweet-icon,.like-icon,.sent-icon{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    color: rgb(47,51,54);
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.reply-icon #icon{
+    margin:0;
+    width: 1.5em;
+    height: 1.5em;
+    /* border-radius: 50%; */
+    /* background: rgb(255, 0, 0); */
+}
+.reply-icon:hover{
+    color: rgba(29,155,240,0.1);
+}
+.retweet-icon:hover{
+    color: aquamarine;
+}
+.like-icon:hover{
+    color:red;
+}
+.sent-icon:hover{
+    color:aqua;
+}
+.retweet-icon #icon{
+    margin: 0;
+    width: 1.5em;
+    height: 1.5em;
+    /* border-radius: 50%; */
+    /* background: rgb(255, 0, 0); */
+}
+.like-icon #icon{
+    margin: 0;
+    width: 1.5em;
+    height: 1.5em;
+    /* border-radius: 50%; */
+    /* background: rgb(255, 0, 0); */
+}
+.sent-icon #icon{
+    margin: 0;
+    width: 1.5em;
+    height: 1.5em;
+    /* border-radius: 50%; */
+    /* background: rgb(255, 0, 0); */
+}

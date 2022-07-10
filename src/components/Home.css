@@ -1,0 +1,207 @@
+.home-container{
+    /* height: 100vh; */
+    width: 80vw;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    /* background-color: violet; */
+    /* position: sticky; */
+    /* top: 0; */
+    /* left: 0; */
+    /* position: absolute;  */
+}
+
+.home-container .sidebar-menu{
+    position:sticky;
+    z-index: 10;
+    top:0;
+    /* height:3000px; */
+    width: 20%;
+    background-color: var(--theme-color);
+}
+.home-container .feed-conatiner{
+    /* position: relative; */
+    /* flex: 0; */
+    /* height: 100vh; */
+    /* margin-top: 200em; */
+    /* width: 50%; */
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    border: 1px solid rgb(47,51,54);
+    /* border-color: rgb(47,51,54); */
+    /* background: rgb(255, 0, 191); */
+}
+.feed-conatiner .header-feed-container{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    height: 4em;
+    width: 95%;
+    /* align-self: center; */
+    position: sticky;
+    top: 0;
+}
+.header-feed-container #icon{
+    width: 2em;
+    height: 2em;
+}
+.header-feed-container span{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.home-container .trend-sidebar{
+    position:sticky;
+    top:0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* height: 100vh; */
+    width: 30%;
+    flex: 1.5;
+    background-color: var(--theme-color);
+    /* background-color: aqua; */
+}
+.trend-sidebar .search-container{
+    background-color: rgba(0, 0, 0, 0.65);
+    position: sticky;
+    top: 0;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container .search{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #202327;
+    border-radius: 2em;
+}
+.search #icon{
+    height: 1.5em;
+    width: 1.5em;
+}
+.search input{
+    height: 60%;
+    width: 80%;
+    outline: none;
+    border: 0;
+    font-size: 1em;
+    background-color: #202327;
+}
+.search.active{
+    border: 1px solid blue;
+    
+    /* background-color: aqua; */
+}
+.trend-sidebar p{
+    color: #fff;
+}
+.trend-sidebar p:focus{
+    color: aqua;
+}
+.trend-sidebar #icon{
+    color: #fff;
+    
+}
+.test{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20em;
+    height: 5em;
+    border-radius: 9999px;
+    /* border-top-left-radius: 30%; */
+    /* border-top-right-radius: 30%; */
+    /* border-bottom-left-radius: 30%; */
+    /* border-bottom-right-radius: 30%; */
+    color: #fff;
+    background: rgb(146, 146, 255);
+}
+/*--------------------------- feed css-------------------------------- */
+.feed-conatiner .write-tweet-box{
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.write-tweet-box .avatar #avatar{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+}
+.write-tweet-container{
+    /* background-color: violet; */
+    width: 100%;
+    align-self: flex-end;
+}
+.write-tweet-container .icons-write-tweet{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    /* width: 90%; */
+    /* height: 3em; */
+    /* background-color: burlywood; */
+}
+.write-tweet-container .text-tweet{
+    width: 100%;
+    min-height: 4em;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    /* align-self: center; */
+    /* background-color: brown; */
+}
+.write-tweet-container .text-tweet p{
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #fff;
+    margin-left: 0.5em;
+}
+.write-tweet-container .text-tweet textarea{
+    width: 100%;
+    /* height:; */
+    font-size: 2em;
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    outline: none;
+    padding-left: 0.2em;
+    resize:none;
+    overflow:hidden;
+}
+.write-tweet-container .text-tweet input{
+    height: fit-content;
+    /* max-width: 10em; */
+}
+.write-tweet-container .icons-write-tweet{
+    padding-bottom: 0.5em;
+}
+.icons-write-tweet .icons{
+    display: flex;
+    width: 30%;
+    color: #1a8cd8;
+    justify-content: space-around;
+}
+.icons-write-tweet .tweet-btn button{
+    width: 7em;
+    height: 3em;
+    border-radius:2em;
+    border: 0;
+    cursor: pointer;
+    background-color: #1a8cd8;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1em;
+}

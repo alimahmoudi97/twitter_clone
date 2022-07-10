@@ -1,0 +1,88 @@
+:root{
+    --icon-color:#fff;
+    --text-color:#fff;
+    --theme-color:rgb(31, 27, 27);
+}
+.sidebar-menu-container{
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    height: 100vh;
+    /* width: 100vw; */
+    justify-content: space-between;
+    border-radius: 10px;
+    /* position:fixed; */
+}
+.sidebar-menu-items-container{
+    /* background-color: rgb(252, 255, 71); */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.sidebar-menu-items #icon{
+    width: 2em;
+    color: var(--icon-color);
+    height: 2em;
+    /* background: wheat; */
+}
+.sidebar-menu-items span{
+    color: var(--text-color);
+    font-weight: 500;
+}
+.sidebar-menu-container .sidebar-menu-items{
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    margin-top: 1.2em;
+    width:90%;
+    cursor: pointer;
+}
+.sidebar-menu-container .sidebar-menu-items span{
+    margin-left: 1em;
+}
+.sidebar-menu-container .tweet-btn-sidebar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    color: #fff;
+    background: #1a8cd8;
+    height: 4em;
+    border-radius: 9999px;
+    margin-top: 2em;
+    cursor: pointer;
+    /* align-self:stretch; */
+}
+.sidebar-menu-container .tweet-btn-sidebar span{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.sidebar-menu-container .account-sidebar{
+    width: 80%;
+    height: 3em;
+    background-color: springgreen;
+    margin-bottom: 2em;
+    border-radius: 9999px;
+    height: 4em;
+    display: flex;   
+    align-items: center;
+    justify-content:center;
+    cursor: pointer;
+}
+.sidebar-menu-container .account-sidebar .account-info{
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 1em; */
+    /* justify-content: center; */
+}
+.sidebar-menu-container .account-sidebar span #icon{
+    width: 2em;
+    height: 2em;
+    color: var(--text-color);
+    /* background: wheat; */
+    /* margin-left: 2em; */
+}
+.account-info span{
+    color: var(--text-color);
+}

@@ -1,0 +1,67 @@
+import React,{useState,useRef,useEffect} from 'react';
+
+import Tweet from './Tweet';
+import { WiStars } from 'react-icons/wi';
+
+import { BsImage,BsEmojiSmile } from 'react-icons/bs';
+import { AiOutlineFileGif } from 'react-icons/ai';
+import { BiPoll } from 'react-icons/bi';
+import { GrSchedulePlay, GrLocation } from 'react-icons/gr';
+
+import avatar from './../download.jpg';
+function Feed() {
+    const textAreaRef = useRef(null);
+    const [currentValue, setCurrentValue] = useState("");
+    useEffect(() => {
+        textAreaRef.current.style.height = "0px";
+        const scrollHeight = textAreaRef.current.scrollHeight;
+        textAreaRef.current.style.height = scrollHeight+"px";
+    },[currentValue])
+    return (
+          <div className='feed-conatiner'>
+                <header className='header-feed-container'>
+                    <span>
+                        Home
+                    </span>
+                    <WiStars id='icon'/>                    
+                </header>
+                <div className='write-tweet-box'>
+                    <div className='avatar'>
+                        <img id="avatar" src={avatar} alt=""/>
+                    </div>
+                    <div className='write-tweet-container'>
+                        <div className='text-tweet'>
+                            {/* <span placeholder='ff'></span> */}
+                            <textarea
+                                ref={textAreaRef}
+                                value={currentValue}
+                                onChange={(e) => {
+                                    setCurrentValue(e.target.value)
+                                }}
+                                placeholder="What's happening?"></textarea>
+                            {/* <input placeholder="What's happening?"/> */}
+                        </div>
+                        <div className='icons-write-tweet'>
+                            <div className='icons'>
+                                <BsImage />
+                                <AiOutlineFileGif />
+                                <BiPoll />
+                                <BsEmojiSmile />
+                                <GrSchedulePlay />
+                                <GrLocation/>
+                            </div>
+                            <div className='tweet-btn'>
+                                <button>Tweet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <Tweet/>
+                <Tweet />
+                <Tweet />
+                <Tweet/>
+            </div>
+    )
+}
+
+export default Feed;
