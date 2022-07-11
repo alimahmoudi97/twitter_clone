@@ -11,7 +11,7 @@ import { BiPoll } from 'react-icons/bi';
 import { GrSchedulePlay, GrLocation } from 'react-icons/gr';
 import { Routes,Route } from 'react-router-dom';
 import avatar from './../download.jpg';
-import Feed from './Feed.js';
+
 function Home() {
     const [isActive, setActive] = useState('');
     const style = document.getElementById('search');
@@ -54,10 +54,6 @@ function Home() {
         }
     }
     return (
-        <div className='home-container'>
-            <div className='sidebar-menu'>
-                <SidebarMenu/>
-            </div>
             <div className='feed-conatiner'>
                 <header className='header-feed-container'>
                     <span>
@@ -101,16 +97,7 @@ function Home() {
                 <Tweet />
                 <Tweet/>
             </div>
-            <div className='trend-sidebar'>
-                <div className='search-container'>
-                    <div id='search' tabIndex={0} onFocus={handleSearchFocus} onBlur={handleSearchBlur} className={`search ${isActive}`}>
-                        <FiSearch id='icon'/>
-                        <input  placeholder='Search Twitter'/>
-                    </div>
-                </div>
-                <Trends/>
-            </div>
-        </div>
+     
     )
 }
 
