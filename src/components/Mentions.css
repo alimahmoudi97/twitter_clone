@@ -1,0 +1,38 @@
+.mentions-box{
+    display: flex;
+    width: 100%;
+    /* background-color: rgb(165, 212, 165); */
+    border-top: 1px solid #2F3336;
+    border-bottom: 1px solid #2F3336;
+}
+.mentions-box .mentions-container-details{
+    color: #fff;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    cursor: pointer;
+}
+.mentions-box .mentions-avatar img{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+}
+.mentions-container-details .mentions-user-info{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.mentions-container-details .mentions-user-text{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.mentions-container-details .mentions-user-replying-to{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+.mentions-container-details .mentions-icons-group{
+    display: flex;
+    justify-content: space-around;
+}

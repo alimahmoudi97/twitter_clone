@@ -4,7 +4,6 @@ import SidebarMenu from './SidebarMenu';
 import Trends from './Trends';
 import Tweet from './Tweet';
 import { WiStars } from 'react-icons/wi';
-import { FiSearch } from 'react-icons/fi';
 import { BsImage,BsEmojiSmile } from 'react-icons/bs';
 import { AiOutlineFileGif } from 'react-icons/ai';
 import { BiPoll } from 'react-icons/bi';
@@ -13,8 +12,7 @@ import { Routes,Route } from 'react-router-dom';
 import avatar from './../download.jpg';
 
 function Home() {
-    const [isActive, setActive] = useState('');
-    const style = document.getElementById('search');
+
     const textAreaRef = useRef(null);
     const [currentValue, setCurrentValue] = useState("");
     useEffect(() => {
@@ -22,39 +20,9 @@ function Home() {
         const scrollHeight = textAreaRef.current.scrollHeight;
         textAreaRef.current.style.height = scrollHeight+"px";
     },[currentValue])
-    const handleSearchBlur = (event) => {
-        // style.classList.toggle('active');
-        if (event.currentTarget === event.target) {
-            console.log('unfocused self');
-            setActive('');
-        } else {
-            console.log('unfocused child', event.target);
-            // style.classList.toggle('active');
-            setActive('');
-        }
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-            console.log('focuse left self');
-            setActive('');
-            // style.classList.toggle('active');
-        }
-    }
-    const handleSearchFocus =(event)=> {
-        if (event.currentTarget === event.target) {
-            console.log('focused self');
-            setActive('active');
-            // style.classList.toggle('active');
-        } else {
-            console.log('focused child');
-            setActive('active');
-            // style.classList.toggle('active');
-        }
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-            // console.log('focuse entered self');
-            setActive('active');
-        }
-    }
+
     return (
-            <div className='feed-conatiner'>
+            <>
                 <header className='header-feed-container'>
                     <span>
                         Home
@@ -93,10 +61,7 @@ function Home() {
                     </div>
                 </div>
                 <Tweet/>
-                <Tweet />
-                <Tweet />
-                <Tweet/>
-            </div>
+            </>
      
     )
 }

@@ -10,6 +10,7 @@ import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
 import {Link } from 'react-router-dom';
 // import { BsFillBookmarkFill } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
+
 function SidebarMenu() {
   return (
       <div className='sidebar-menu-container'>
@@ -19,33 +20,33 @@ function SidebarMenu() {
               <GrTwitter id='icon'/>
           </div>
           <div className='sidebar-menu-items'>
-              <RiHome7Fill id='icon' />
-              <span>Home</span>
+                <RiHome7Fill id='icon' />
+                <Link to="/" style={{textDecoration:'none'}}><span>Home</span></Link>  
           </div>
            <div className='sidebar-menu-items'>
-              <FiHash id='icon' />
-              <span>Explore</span>
+                  <FiHash id='icon' />
+                  <Link to="explore" style={{textDecoration:'none'}}><span>Explore</span></Link>
           </div>
            <div className='sidebar-menu-items'>
-              <BsPeopleFill id='icon' />
-              <span>Communities</span>
+                  <BsPeopleFill id='icon' />
+                  <Link to="communities" style={{textDecoration:'none'}}><span>Communities</span></Link>
           </div>
 
            <div className='sidebar-menu-items'>
-              <IoMdNotifications id='icon' />
-              <span>Notifications</span>
+                  <IoMdNotifications id='icon' />
+                  <Link to="notifications" style={{textDecoration:'none'}}><span>Notifications</span></Link>
           </div>
            <div className='sidebar-menu-items'>
-              <FiMail id='icon' />
-              <span>Messages</span>
+                  <FiMail id='icon' />
+                  <Link to="messages" style={{textDecoration:'none'}}><span>Messages</span></Link>
           </div>
            <div className='sidebar-menu-items'>
-              <BsFillBookmarkFill id='icon' />
-              <span>Bookmarks</span>
+                  <BsFillBookmarkFill id='icon' />
+                  <Link to="bookmarks" style={{textDecoration:'none'}}><span>Bookmarks</span></Link>
           </div>
            <div className='sidebar-menu-items'>
-              <CgProfile id='icon' />
-              <span>Profile</span>
+                  <CgProfile id='icon' />
+                  <Link to="profile" style={{textDecoration:'none'}}><span>Profile</span></Link>
           </div>
            <div className='sidebar-menu-items'>
               <HiOutlineDotsCircleHorizontal id='icon' />
