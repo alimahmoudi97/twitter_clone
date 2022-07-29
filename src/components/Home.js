@@ -20,7 +20,9 @@ function Home() {
         const scrollHeight = textAreaRef.current.scrollHeight;
         textAreaRef.current.style.height = scrollHeight+"px";
     },[currentValue])
-
+    const handleTweetButton =()=>{
+        
+    }
     return (
             <>
                 <header className='header-feed-container'>
@@ -55,7 +57,7 @@ function Home() {
                                 <GrLocation/>
                             </div>
                             <div className='tweet-btn'>
-                                <button>Tweet</button>
+                                <button onClick={handleTweetButton}>Tweet</button>
                             </div>
                         </div>
                     </div>

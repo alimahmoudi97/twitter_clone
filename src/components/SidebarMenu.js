@@ -7,6 +7,7 @@ import { BsPeopleFill,BsFillBookmarkFill} from 'react-icons/bs';
 import { IoMdNotifications } from 'react-icons/io';
 import { FiMail,FiMoreHorizontal } from 'react-icons/fi';
 import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
+import { RiQuillPenLine } from 'react-icons/ri';
 import {Link } from 'react-router-dom';
 // import { BsFillBookmarkFill } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
@@ -19,56 +20,57 @@ function SidebarMenu() {
           <div className='icon-header-twitter sidebar-menu-items'>
               <GrTwitter id='icon'/>
           </div>
-          <div className='sidebar-menu-items'>
+          <div id='home' className='sidebar-menu-items'>
                 <RiHome7Fill id='icon' />
-                <Link to="/" style={{textDecoration:'none'}}><span>Home</span></Link>  
+                <Link to="/" style={{textDecoration:'none'}}><span id='link-text'>Home</span></Link>  
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='explore' className='sidebar-menu-items'>
                   <FiHash id='icon' />
-                  <Link to="explore" style={{textDecoration:'none'}}><span>Explore</span></Link>
+                  <Link to="explore" style={{textDecoration:'none'}}><span id='link-text'>Explore</span></Link>
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='communities' className='sidebar-menu-items'>
                   <BsPeopleFill id='icon' />
-                  <Link to="communities" style={{textDecoration:'none'}}><span>Communities</span></Link>
+                  <Link to="communities" style={{textDecoration:'none'}}><span id='link-text'>Communities</span></Link>
           </div>
 
-           <div className='sidebar-menu-items'>
+           <div id='notifications' className='sidebar-menu-items'>
                   <IoMdNotifications id='icon' />
-                  <Link to="notifications" style={{textDecoration:'none'}}><span>Notifications</span></Link>
+                  <Link to="notifications" style={{textDecoration:'none'}}><span id='link-text'>Notifications</span></Link>
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='messages' className='sidebar-menu-items'>
                   <FiMail id='icon' />
-                  <Link to="messages" style={{textDecoration:'none'}}><span>Messages</span></Link>
+                  <Link to="messages" style={{textDecoration:'none'}}><span id='link-text'>Messages</span></Link>
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='bookmarks' className='sidebar-menu-items'>
                   <BsFillBookmarkFill id='icon' />
-                  <Link to="bookmarks" style={{textDecoration:'none'}}><span>Bookmarks</span></Link>
+                  <Link to="bookmarks" style={{textDecoration:'none'}}><span id='link-text'>Bookmarks</span></Link>
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='profiles' className='sidebar-menu-items'>
                   <CgProfile id='icon' />
-                  <Link to="profile" style={{textDecoration:'none'}}><span>Profile</span></Link>
+                  <Link to="profile" style={{textDecoration:'none'}}><span id='link-text'>Profile</span></Link>
           </div>
-           <div className='sidebar-menu-items'>
+           <div id='more' className='sidebar-menu-items'>
               <HiOutlineDotsCircleHorizontal id='icon' />
-              <span>More</span>
+              <span id='link-text'>More</span>
           </div>
           <div className='tweet-btn-sidebar'>
-              <span>Tweet</span>
+          <span id='btn-text'>Tweet</span>
+          <RiQuillPenLine id='icon'/>
           </div>
               
         </div>
           <div className='account-sidebar'>
-              <div style={{display:'flex',width:'80%',justifyContent:'space-between'}}>
-                <span>
+              <div className='account-sidebar-details'>
+                
                     <CgProfile id='icon'/>
-                </span>
+                
                 <span className='account-info'>
                     <span>Ali</span>
                     <span>user name</span>
                 </span>
-                <span>
-                    <FiMoreHorizontal id='icon'/>
-                </span>   
+                
+                    <FiMoreHorizontal id='icon-three-dots'/>
+                   
               </div>
           </div>
     </div>

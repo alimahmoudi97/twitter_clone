@@ -42,6 +42,7 @@
 .tweet-container-details .tweet-user-info{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     /* background-color: aqua; */
     width: 100%;
 }

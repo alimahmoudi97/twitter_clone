@@ -5,20 +5,22 @@
 }
 .sidebar-menu-container{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction:column;
     height: 100vh;
     /* width: 100vw; */
     justify-content: space-between;
     border-radius: 10px;
+    transition:all 1s;
     /* position:fixed; */
 }
 .sidebar-menu-items-container{
     /* background-color: rgb(252, 255, 71); */
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
+    transition:all 1s;
 }
 .sidebar-menu-items #icon{
     width: 2em;
@@ -58,9 +60,12 @@
     font-size: 1.2em;
     font-weight: 600;
 }
+.sidebar-menu-container .tweet-btn-sidebar #icon{
+    display: none;
+}
 .sidebar-menu-container .account-sidebar{
     width: 80%;
-    height: 3em;
+    /* height: 4em; */
     background-color: springgreen;
     margin-bottom: 2em;
     border-radius: 9999px;
@@ -70,13 +75,13 @@
     justify-content:center;
     cursor: pointer;
 }
-.sidebar-menu-container .account-sidebar .account-info{
+.account-sidebar-details .account-info{
     display: flex;
     flex-direction: column;
-    /* margin-left: 1em; */
+    margin-left: 1em;
     /* justify-content: center; */
 }
-.sidebar-menu-container .account-sidebar span #icon{
+.account-sidebar-details #icon,#icon-three-dots{
     width: 2em;
     height: 2em;
     color: var(--text-color);
@@ -86,3 +91,66 @@
 .account-info span{
     color: var(--text-color);
 }
+.account-sidebar .account-sidebar-details{
+    display: flex;
+    justify-content: space-between;
+}
+@media(max-width:900px){
+    .sidebar-menu-container .account-sidebar{
+        justify-content:stretch;
+    }
+    .sidebar-menu-container .tweet-btn-sidebar span{
+        display: none;
+    }
+    .sidebar-menu-container .tweet-btn-sidebar #icon{
+        display:block;
+        width: 60%;
+        height:60%;
+    }
+    .sidebar-menu-container .account-sidebar{
+        width: 4em;
+        height: 4em;
+    }
+    .account-sidebar-details #icon{
+        width: 4em;
+        height: 4em;
+        align-self: center;
+    }
+    .account-sidebar-details #icon-three-dots{
+        display: none;
+    }
+    .account-info span{
+        display: none;
+    }
+    .sidebar-menu-items #link-text{
+        display: none;
+    }
+    .sidebar-menu-container .tweet-btn-sidebar{
+        width: 4em;
+        height: 4em;
+    }
+}
+
+@media (max-width:500px){
+    .sidebar-menu-container .account-sidebar{
+        display: none;
+    }
+    .sidebar-menu-container .tweet-btn-sidebar{
+        display: none;
+    }
+    .sidebar-menu-items-container{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        /* margin:0; */
+        /* padding: 0 auto; */
+        /* align-self: center; */
+    }
+    .sidebar-menu-items-container .icon-header-twitter,#bookmarks,#more,#communities
+    {
+        display: none;
+    }
+    .sidebar-menu-items-container .sidebar-menu-items{
+        justify-content: center;
+    }
+}   

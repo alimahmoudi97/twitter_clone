@@ -13,8 +13,8 @@ function Tweet() {
     let TimeLineTweet = new TimeLine("mahmoudi345");
     for (let i = 0; i < 10; i++){
         let data = new TweetUser(`Ali ${i}`, "mahmoudi", "Hi everyone", "2", "5", new Date());
-        data.replyers("hadi", "mahmoudi","hi ali","0", "10", new Date());
-        data.replyers("mahdi", "mahmoudi", "this is good situation", "0", "120", new Date());
+        // data.replyers("hadi", "mahmoudi","hi ali","0", "10", new Date());
+        // data.replyers("mahdi", "mahmoudi", "this is good situation", "0", "120", new Date());
         TimeLineTweet.addTweetToTimeLine(data);
     }
     // console.log(TimeLineTweet);

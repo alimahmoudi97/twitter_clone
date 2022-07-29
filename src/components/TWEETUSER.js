@@ -18,7 +18,6 @@ function TweetUser(name,username,tweet,reply,like,date) {
             tweet,
         });
         this.replyersLenght++;
-        
     }
 }
 
