@@ -2,7 +2,9 @@ import React from 'react'
 
 function Profile() {
   return (
-    <div className='feed-conatiner' style={{color:"white"}}>Profile</div>
+    <div className='feed-conatiner' style={{ color: "white" }}>
+      Profile
+    </div>
   )
 }
 

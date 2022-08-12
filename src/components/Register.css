@@ -1,6 +1,188 @@
 .register-container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.register-container .register-content{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /* background-color: bisque; */
+}
+.register-content .register-logo{
+    flex: 1;
+    /* background-color: aqua; */
+    position: relative;
+}
+.register-content .register-box{
+    flex:1;
+    height: 100%;
+    /* width: 100%; */
+    /* background-color: cadetblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-logo #logo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
-    top:50%;
+}
+.register-logo #logo-twitter{
+    z-index: 10;
+    position:absolute;
+    top: 50%;
     left: 50%;
-    background-color: aqua;
+    transform: translate(-50%,-50%);
+}
+.register-logo #logo{
+    z-index: -10;
+}
+.register .register-logo-twitter{
+    width:3em;
+    height: 3em;
+}
+.register .register-botton{
+    width: 80%;
+    height: 3em;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.register .div-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30em;
+}
+.register h1,h2{
+    color: white;
+}
+.div-line .text{
+    padding-bottom: 2px;
+}
+.line-container .line{
+    width: 11em;
+    height: 1px;
+    background-color: rgb(47, 51, 54);
+}
+.register-box .register{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    /* background-color: aquamarine; */
+    height: 50vh;
+}
+.register p{
+    color:white;
+}
+.register #botton-three{
+    background-color: blue;
+}
+#botton-three span{
+    color: white;
+}
+.register #botton-four{
+    background-color: transparent;
+    color: white;
+    border:1px solid white;
+}
+.register-lable-container{
+    background-color:rgba(63, 61, 61, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+}
+.register-lable-container .register-popup{
+    background-color: black;
+    width: 30vw;
+    height: 60vh;
+}
+.register .register-input{
+    width: 80%;
+    height: 3em;
+    /* background-color: aqua; */
+}
+.register-input input{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: large;
+    outline: 0;
+    border: 1px solid rgb(51, 54, 57);
+    background-color: transparent;
+    color: white;
+}
+.register #close-icon{
+    color: white;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+.inactive{
+    display: none;
+}
+.signup-popup-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    height: 40vh;
+    width: 30vw;
+}
+.signup-popup-container .signup-input{
+    width: 80%;
+    height: 4em;
+}
+.signup-popup-container .signup{
+    width: 80%;
+    height: 4em;
+    color: blue;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.signup span{
+    font-size: large;
+    font-weight: bold;
+}
+.signup-input input{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: large;
+    outline: 0;
+    border: 1px solid rgb(51, 54, 57);
+    background-color: transparent;
+    color: white;
 }
