@@ -1,0 +1,68 @@
+.tweet-details-box{
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    /* height: 30vh; */
+    /* background-color: blueviolet; */
+}
+
+.tweet-details-box .tweet-details-container{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    /* background-color: rgb(240, 255, 242); */
+    flex-direction: column;
+    width: 95%;
+}
+.tweet-details-container .tweet-details-info-user-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1em;
+}
+.tweet-details-container .tweet-details-info-user{
+    display: flex;
+    width: 20em;
+}
+.tweet-details-info-user .text{
+    font-size: 1.5em;
+    color:white;
+}
+.tweet-details-info-user .tweet-details-avatar{
+    width: 4em;
+    height: 4em;
+}
+.tweet-details-avatar img{
+    border-radius: 50%;
+}
+.tweet-details-container .text-tweet-details{
+    max-width:95%;
+    align-self: center;
+}
+.text-tweet-details p{
+    word-wrap: break-word;
+    align-self: center;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+.text-tweet-details div{
+    color: white;
+}
+.text-tweet-details a{
+    color:white;
+}
+.text-tweet-details .tweet-reaction{
+    border-top: 1px solid rgb(47,51,54);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-top: 1em;
+}
+.text-tweet-details .tweet-icons-group{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid rgb(47,51,54);
+}

@@ -25,7 +25,7 @@
     /* flex: 0; */
     /* height: 100vh; */
     /* margin-top: 200em; */
-    /* width: 50%; */
+    width: 50%;
     display: flex;
     flex-direction: column;
     flex: 3;
@@ -94,7 +94,8 @@
 .feed-conatiner .write-tweet-box{
     display: flex;
     /* flex-direction: column; */
-    width: 100%;
+    align-self: center;
+    width: 95%;
     border-bottom: 1px solid #2f3336;
     /* background-color: aqua; */
 }
@@ -183,6 +184,12 @@
         display: none;
     }
     .sidebar-menu-container .tweet-btn-sidebar{
+        display: none;
+    }
+    .write-tweet-container .icons-write-tweet{
+        justify-content: flex-end;
+    }
+    .write-tweet-container .icons-write-tweet .icons{
         display: none;
     }
     .sidebar-menu-items-container{

@@ -13,6 +13,7 @@ import Messages from './Messages';
 import Notifications from './Notifications';
 import Profile from './Profile';
 import Search from './Search';
+import TweetDetails from './TweetDetails';
 
 function Main() {
   
@@ -29,7 +30,8 @@ function Main() {
                 <Route path="/explore" element={<Explore />} />
                 <Route path="/messages" element={<Messages />} />
                 <Route path="/notifications" element={<Notifications />} />
-                <Route path="/profile" element={<Profile/>} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path='/tweetdetails' element={<TweetDetails/>} />
             </Routes>
 
             </div>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './SidebarMenu.css';
 import { GrTwitter } from 'react-icons/gr';
 import { RiHome7Fill } from 'react-icons/ri';
@@ -8,11 +9,43 @@ import { IoMdNotifications } from 'react-icons/io';
 import { FiMail,FiMoreHorizontal } from 'react-icons/fi';
 import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
 import { RiQuillPenLine } from 'react-icons/ri';
-import {Link } from 'react-router-dom';
-// import { BsFillBookmarkFill } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
+import{register} from './../redux/asyncActions/UserAsync';
 import { CgProfile } from 'react-icons/cg';
 
+const tweet = {
+  tweets: ["hello world"],
+  isLoading: false,
+  error: null,
+  singleTweet: {},
+  uploading: false,
+  message: null,
+  bookmarksList:[]
+}
 function SidebarMenu() {
+  const dispatch = useDispatch();
+  const temptData = useSelector(state => state.isLoading);
+  const [data, setData] = useState('');
+  const fetchData = (e) => {
+    console.log("ggg");
+    e.preventDefault();
+    axios.get("https://twitterapis.herokuapp.com/user/ali91/").then((response) => {
+      setData(response)
+    }).catch((error) => {
+      console.log(error)
+    });
+    dispatch(register(
+      "ali91",
+      "alimahmoudi627@gmail.com",
+      "ali@7%213",
+      "ali@7%213",
+    ));
+  }
+  useEffect(() => {
+    console.log(temptData);
+    console.log(data);
+  },[temptData,data])
   return (
       <div className='sidebar-menu-container'>
           
@@ -54,7 +87,7 @@ function SidebarMenu() {
               <span id='link-text'>More</span>
           </div>
           <div className='tweet-btn-sidebar'>
-          <span id='btn-text'>Tweet</span>
+          <span id='btn-text' onClick={fetchData}>Tweet</span>
           <RiQuillPenLine id='icon'/>
           </div>
               

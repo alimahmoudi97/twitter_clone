@@ -4,12 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter} from 'react-router-dom';
+import  store  from './redux/store';
+import { Provider } from 'react-redux';
+import axios from 'axios';
+const baseURL = "https://twitterapis.herokuapp.com/";
+
+export const axiosInstance = axios.create({
+  baseURL: baseURL,
+  // timeout: 5000,
+  headers: {
+    "content_Type": "application/json",
+    accept:"application/json",
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

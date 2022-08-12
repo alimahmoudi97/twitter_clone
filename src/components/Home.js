@@ -1,4 +1,5 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import './Home.css';
 import SidebarMenu from './SidebarMenu';
 import Trends from './Trends';
@@ -10,17 +11,30 @@ import { BiPoll } from 'react-icons/bi';
 import { GrSchedulePlay, GrLocation } from 'react-icons/gr';
 import { Routes,Route } from 'react-router-dom';
 import avatar from './../download.jpg';
+import TweetUser from './TWEETUSER';
+import { addTweet } from './../app/TweetsUserSlice';
 
 function Home() {
-
+    const data=useSelector((state)=>state.tweet)
     const textAreaRef = useRef(null);
     const [currentValue, setCurrentValue] = useState("");
+    const [makeTweet, setMakeTweet] = useState({});
+    const dispatch = useDispatch();
+
     useEffect(() => {
         textAreaRef.current.style.height = "0px";
         const scrollHeight = textAreaRef.current.scrollHeight;
         textAreaRef.current.style.height = scrollHeight+"px";
-    },[currentValue])
+    }, [currentValue])
+    useEffect(() => {
+        let tweet= new TweetUser("ccc", "vvv",currentValue, 2, 3, 4);
+        setMakeTweet(tweet);
+    }, [currentValue])
+    useEffect(() => {
+        // console.log(data);
+    },[data])
     const handleTweetButton =()=>{
+        const tweet = new TweetUser("ccc", "vvv", "ttttttt", 2, 3, 4);
         
     }
     return (
@@ -57,12 +71,12 @@ function Home() {
                                 <GrLocation/>
                             </div>
                             <div className='tweet-btn'>
-                                <button onClick={handleTweetButton}>Tweet</button>
+                                <button onClick={()=>dispatch(addTweet(makeTweet))}>Tweet</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <Tweet/>
+                {/* <Tweet/> */}
             </>
      
     )

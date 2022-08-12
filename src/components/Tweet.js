@@ -1,29 +1,25 @@
 import React from 'react';
 import { SiTheconversation } from 'react-icons/si';
+import { useSelector,useDispatch } from 'react-redux';
 import { FaRetweet } from 'react-icons/fa';
 import { BsHeart, BsUpload } from 'react-icons/bs';
 import { BsThreeDots } from 'react-icons/bs';
+import {Link} from 'react-router-dom';
 import './Tweet.css';
 import avatar from './../download.jpg';
 import TweetUser from './TWEETUSER.js';
 import TimeLine from './TimeLine.js';
 
 function Tweet() {
-
-    let TimeLineTweet = new TimeLine("mahmoudi345");
-    for (let i = 0; i < 10; i++){
-        let data = new TweetUser(`Ali ${i}`, "mahmoudi", "Hi everyone", "2", "5", new Date());
-        // data.replyers("hadi", "mahmoudi","hi ali","0", "10", new Date());
-        // data.replyers("mahdi", "mahmoudi", "this is good situation", "0", "120", new Date());
-        TimeLineTweet.addTweetToTimeLine(data);
-    }
-    // console.log(TimeLineTweet);
+    const data=useSelector((state)=>state.tweet)
     return (
         
-        TimeLineTweet.listTimeLine.map((index) => {
+        data.tweets.map((value,index) => {
             return (
+                <Link to="/tweetdetails">
+                
                 <div className='tweet-box'>
-                        <div className='tweet-container' style={{paddingTop:'1em'}}>
+                        <div className='tweet-container'>
                             <div className='tweet-avatar'>
                                 <img src={avatar} alt="" />
                             {(index.replyersLenght >= 1) &&
@@ -45,7 +41,7 @@ function Tweet() {
                                     <span>Replying to @mahmoudi45</span>
                                 </div>
                                 <div className='tweet-user-text'>
-                                    <p>Hi</p>
+                                    <p>{value.tweet}</p>
                                 </div>
                                 <div className='tweet-icons-group'>
                                             <div className='reply-icon'>
@@ -67,7 +63,7 @@ function Tweet() {
                                     </div>
                             </div>
                         </div>
-                    {(index.replyersLenght >= 1) && (
+                    {(index.replyersLenght >=1) && (
                         
                         <div className='tweet-container'>
                             <div className='tweet-avatar'>
@@ -86,7 +82,7 @@ function Tweet() {
                                     <span>Replying to @mahmoudi45</span>
                                 </div>
                                 <div className='tweet-user-text'>
-                                    <p>Hi</p>
+                                    <p>HI</p>
                                 </div>
                                 <div className='tweet-icons-group'>
                                             <div className='reply-icon'>
@@ -111,6 +107,7 @@ function Tweet() {
                         )}
                     
                 </div>
+            </Link>
             )
         })
     )

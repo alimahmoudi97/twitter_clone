@@ -3,12 +3,11 @@ import Home from './components/Home.js';
 import './App.css';
 import Main from './components/Main';
 import Mentions from './components/Mentions';
+import TweetDetails from './components/TweetDetails';
 
 function App() {
   return (
-    // <Home/>
     <Main />
-    // <Mentions/>
   );
 }
 
