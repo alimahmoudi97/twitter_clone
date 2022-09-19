@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsThreeDots } from 'react-icons/bs';
 import './Bookmarks.css';
-import Tweet from './Tweet.js';
+import Tweet from './Tweet';
 function Bookmarks() {
   return (
     <div className='bookmarks-container'>
@@ -14,7 +14,7 @@ function Bookmarks() {
           <BsThreeDots id='icon'/>
         </div>
       </div>
-      <Tweet/>
+      {/* <Tweet/> */}
     </div>
   )
 }

@@ -10,11 +10,10 @@ import avatar from './../download.jpg';
 import TweetUser from './TWEETUSER.js';
 import TimeLine from './TimeLine.js';
 
-function Tweet() {
-    const data=useSelector((state)=>state.tweet)
+function Tweet({data}) {
     return (
         
-        data.tweets.map((value,index) => {
+        data.map((value,index) => {
             return (
                 <Link to="/tweetdetails">
                 
@@ -31,8 +30,8 @@ function Tweet() {
                             <div className='tweet-container-details'>
                                 <div className='tweet-user-info'>
                                     <div className='user-info'>
-                                        <span>Ali</span>
-                                        <span>mahmoudi45</span>
+                                        <span>Ali  </span>
+                                        <span>{value.author.username}</span>
                                         <span>. Mar 19</span>
                                     </div>
                                     <BsThreeDots id='icon'/>
@@ -41,7 +40,7 @@ function Tweet() {
                                     <span>Replying to @mahmoudi45</span>
                                 </div>
                                 <div className='tweet-user-text'>
-                                    <p>{value.tweet}</p>
+                                    <p>{value.title}</p>
                                 </div>
                                 <div className='tweet-icons-group'>
                                             <div className='reply-icon'>

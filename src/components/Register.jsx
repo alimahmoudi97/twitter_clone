@@ -5,9 +5,34 @@ import apple_logo from './../apple_logo.svg';
 import google_icon from 'react-icons/fc';
 import { AiOutlineClose } from 'react-icons/ai';
 import './Register.css';
-
+import { useEffect } from "react";
+import { getTokens, login } from "../redux/asyncActions/UserAsync";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { register } from "../redux/asyncActions/UserAsync";
 
 const SignInPopUp = () => {
+    const user = useSelector((state) => state.userReducer);
+    const { isAuthenticated } = user;
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsername = (e) => {
+        setEmail(e.target.value);
+    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        dispatch(login(email, password));
+    }
+    useEffect(() => {
+        isAuthenticated && navigate("/");
+        // console.log(isAuthenticated);
+    },[navigate,isAuthenticated])
     return (
         <>
             <img className="register-logo-twitter" src={logo_register} alt="" />
@@ -32,11 +57,24 @@ const SignInPopUp = () => {
             <div className="register-input">
                 <input
                     type="text"
-                    placeholder="Phone,email,username"
+                    placeholder="Email"
+                    value={email}
+                    onChange={handleUsername}
                 />
             </div>
-            <div className="register-botton">
-                <span>Next</span>
+            <div className="register-input">
+                <input
+                    type="text"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePassword}
+                />
+            </div>
+            <div
+                className="register-botton"
+                onClick={handleSignIn}
+            >
+                <span>Sign In</span>
             </div>
             <div id="botton-four" className="register-botton">
                 <span>Forgot password?</span>
@@ -46,6 +84,40 @@ const SignInPopUp = () => {
 };
 
 const SignUpPopUp = () => {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repassword, setRepassword] = useState('');
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+    }
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+    const handleRepassword = (e) => {
+        setRepassword(e.target.value);
+    }
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        dispatch(register(
+            username,
+            email,
+            password,
+            repassword));
+    }
+    useEffect(() => {
+        console.log("Aligfdh");
+        if (isAuthenticated) {
+            console.log("Register:"+isAuthenticated);
+            navigate("/profile");
+        }
+    },[isAuthenticated, navigate]);
     return (
         <>
             <div className="signup-popup-container">
@@ -54,6 +126,8 @@ const SignUpPopUp = () => {
                     <input
                         type="text"
                         placeholder="username"
+                        value={username}
+                        onChange={handleUsername}
                         required
                     />
                     </div>
@@ -62,6 +136,8 @@ const SignUpPopUp = () => {
                     <input
                         type="text"
                         placeholder="email"
+                        value={email}
+                        onChange={handleEmail}
                         required
                     />
                     </div>
@@ -70,6 +146,8 @@ const SignUpPopUp = () => {
                     <input
                         type="text"
                         placeholder="password"
+                        value={password}
+                        onChange={handlePassword}
                         required
                     />
                     </div>
@@ -78,10 +156,15 @@ const SignUpPopUp = () => {
                     <input
                         type="text"
                         placeholder="repassword"
+                        value={repassword}
+                        onChange={handleRepassword}
                         required
                     />
                 </div>
-                <div className="signup">
+                <div
+                    className="signup"
+                    onClick={handleSignUp}
+                >
                     <span>Sin Up</span>
                 </div>
             </div>

@@ -17,14 +17,19 @@ import {
     setMeta,
 } from './../slices/userSlice';
 import axios from 'axios';
-import {axiosInstance} from "../../index"
+import { axiosInstance } from "../../index";
 const url = "https://twitterapis.herokuapp.com/";
 
 export const load_user = () => async (dispatch) => {
     if (localStorage.getItem('access')) {
         try {
-            const res = await axiosInstance.get(`${url}auth/users/me/`);
+            const res = await axiosInstance.get(`${url}auth/users/me/`, {
+                headers: {
+                    Authorization: `JWT ${localStorage.getItem('access')}`
+                }
+            });
             dispatch(userSuccess(res.data));
+            console.log("load user");
         } catch (error) {
             const res = error.response.data.code;
             if (localStorage.getItem('refresh')) {
@@ -52,7 +57,15 @@ export const refreshToken = () => async (dispatch) => {
         dispatch(userFail())
     }
 }
-
+export const getTokens = (email, password) => (dispatch) => {
+    axios.post(`${url}api/token/`,{email,password})
+        .then((res) => {
+            console.log(res.data.access);
+            localStorage.setItem("access", res.data.access);
+            localStorage.setItem("refresh", res.data.refresh);
+            dispatch(userRegisterSuccess(res.data));
+        })
+}
 export const register =
     (username, email, password, re_password) => (dispatch) => {
         dispatch(setLoading(true));
@@ -64,10 +77,9 @@ export const register =
                 re_password,
             })
             .then((res) => {
-                dispatch(userRegisterSuccess());
+                dispatch(login(email, password));
                 dispatch(load_user());
                 dispatch(setLoading(false));
-                console.log("YEE")
             })
             .catch((err) => {
                 const errcode = err.response.data;
@@ -123,8 +135,11 @@ export const login = (email, password) => async (dispatch) => {
             password,
         });
         dispatch(loginSuccess(res.data));
+        // dispatch(checkAuthenticated());
         dispatch(load_user());
+        // dispatch(getTokens(email, password));
         dispatch(setLoading(false));
+        console.log("login")
     } catch (error) {
         dispatch(userFail("User or password is wrong!"));
         dispatch(setLoading(false));
@@ -136,6 +151,8 @@ export const checkAuthenticated = () => async (dispatch) => {
             headers: {
                 "content-Type": "application/json",
                 Accept: "application/json",
+                Authorization: `JWT ${localStorage.getItem('access')}`
+
             },
         };
         const body = JSON.stringify({ token: localStorage.getItem('access') });

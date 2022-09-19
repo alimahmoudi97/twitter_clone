@@ -12,10 +12,12 @@ import { GrSchedulePlay, GrLocation } from 'react-icons/gr';
 import { Routes,Route } from 'react-router-dom';
 import avatar from './../download.jpg';
 import TweetUser from './TWEETUSER';
-import { addTweet } from './../app/TweetsUserSlice';
-
+// import { addTweet } from './../app/TweetsUserSlice';
+import {addTweet, load_tweet} from './../redux/asyncActions/TweetAsync';
+import { checkAuthenticated } from '../redux/asyncActions/UserAsync';
 function Home() {
-    const data=useSelector((state)=>state.tweet)
+    const tweets = useSelector((state) => state.tweetReducer.tweets);
+    const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
     const textAreaRef = useRef(null);
     const [currentValue, setCurrentValue] = useState("");
     const [makeTweet, setMakeTweet] = useState({});
@@ -27,15 +29,17 @@ function Home() {
         textAreaRef.current.style.height = scrollHeight+"px";
     }, [currentValue])
     useEffect(() => {
-        let tweet= new TweetUser("ccc", "vvv",currentValue, 2, 3, 4);
-        setMakeTweet(tweet);
+        setMakeTweet({
+            title: currentValue,
+            is_private:false,
+        });
     }, [currentValue])
     useEffect(() => {
-        // console.log(data);
-    },[data])
+        dispatch(load_tweet());
+        console.log("Tweets");
+    },[isAuthenticated])
     const handleTweetButton =()=>{
-        const tweet = new TweetUser("ccc", "vvv", "ttttttt", 2, 3, 4);
-        
+        dispatch(addTweet(makeTweet));
     }
     return (
             <>
@@ -71,12 +75,13 @@ function Home() {
                                 <GrLocation/>
                             </div>
                             <div className='tweet-btn'>
-                                <button onClick={()=>dispatch(addTweet(makeTweet))}>Tweet</button>
+                                <button onClick={handleTweetButton}>Tweet</button>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
-                {/* <Tweet/> */}
+                <Tweet data={tweets}/>
             </>
      
     )

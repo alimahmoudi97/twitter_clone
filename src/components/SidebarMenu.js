@@ -11,8 +11,9 @@ import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
 import { RiQuillPenLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import{register} from './../redux/asyncActions/UserAsync';
+import{register,getTokens, logoutAct, load_user, checkAuthenticated} from './../redux/asyncActions/UserAsync';
 import { CgProfile } from 'react-icons/cg';
+import { resetDataTweet } from '../redux/asyncActions/TweetAsync';
 
 const tweet = {
   tweets: ["hello world"],
@@ -27,25 +28,33 @@ function SidebarMenu() {
   const dispatch = useDispatch();
   const temptData = useSelector(state => state.isLoading);
   const [data, setData] = useState('');
+  const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
+
   const fetchData = (e) => {
-    console.log("ggg");
     e.preventDefault();
-    axios.get("https://twitterapis.herokuapp.com/user/ali91/").then((response) => {
-      setData(response)
-    }).catch((error) => {
-      console.log(error)
-    });
-    dispatch(register(
-      "ali91",
-      "alimahmoudi627@gmail.com",
-      "ali@7%213",
-      "ali@7%213",
+    // axios.get("https://twitterapis.herokuapp.com/user/ali91/").then((response) => {
+    //   setData(response)
+    // }).catch((error) => {
+    //   console.log(error)
+    // });
+    dispatch(getTokens(
+      "gholamreza123@gmail.com",
+      "gh@gh4321"
     ));
   }
+
+  const handleSignOut = () => {
+    dispatch(logoutAct());
+    dispatch(load_user());
+    dispatch(checkAuthenticated());
+    // dispatch(resetDataTweet());
+  }
+
   useEffect(() => {
     console.log(temptData);
     console.log(data);
-  },[temptData,data])
+    console.log(isAuthenticated);
+  },[temptData,data,isAuthenticated])
   return (
       <div className='sidebar-menu-container'>
           
@@ -92,7 +101,7 @@ function SidebarMenu() {
           </div>
               
         </div>
-          <div className='account-sidebar'>
+          <div onClick={handleSignOut} className='account-sidebar'>
               <div className='account-sidebar-details'>
                 
                     <CgProfile id='icon'/>
