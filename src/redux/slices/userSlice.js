@@ -25,8 +25,9 @@ export const userRegister = createSlice({
             state.access = localStorage.setItem('access', payload.access);
             state.refresh = localStorage.setItem('refresh', payload.refresh);
             state.isAuthenticated = true;
+            state.message="login success!."
             console.log(payload.access);
-            console.log("access is ", localStorage.getItem("access"));
+            console.log("access is ", localStorage.getItem('access'));
         },
         userSuccess: (state, action) => {
             state.user = action.payload;
@@ -46,7 +47,7 @@ export const userRegister = createSlice({
             state.message = null;
         },
         userRegisterSuccess: (state, {payload}) => {
-            // state.message = "Successfully registered ! Please activate account from email.";
+            state.message = "Successfully registered!.";
             state.isAuthenticated = true;
             console.log(`authenticate:${state.isAuthenticated}`)
         },
@@ -57,6 +58,8 @@ export const userRegister = createSlice({
         },
         authSuccess: (state) => {
             state.isAuthenticated = true;
+            state.access = localStorage.setItem('access', state.access);
+            state.refresh = localStorage.setItem('refresh', state.refresh);
         },
         recommendUser: (state, { payload }) => {
             state.recommendUser = payload;
@@ -81,6 +84,7 @@ export const userRegister = createSlice({
             state.access = null;
             state.refresh = null;
             state.isAuthenticated = false;
+            state.message = "successfully logout!.";
         },
         loadedMoreUser: (state, { payload }) => {
             state.userList.push(...payload);

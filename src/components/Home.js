@@ -15,12 +15,18 @@ import TweetUser from './TWEETUSER';
 // import { addTweet } from './../app/TweetsUserSlice';
 import {addTweet, load_tweet} from './../redux/asyncActions/TweetAsync';
 import { checkAuthenticated } from '../redux/asyncActions/UserAsync';
+import data from '@emoji-mart/data';
+import { Picker } from 'emoji-mart';
+import { removeMessage } from '../redux/slices/tweetSlice';
+// import "emoji-mart/css/emoji-mart.css";
+
 function Home() {
     const tweets = useSelector((state) => state.tweetReducer.tweets);
     const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
     const textAreaRef = useRef(null);
     const [currentValue, setCurrentValue] = useState("");
     const [makeTweet, setMakeTweet] = useState({});
+    const [showEmoji, setShowEmoji] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,10 +42,15 @@ function Home() {
     }, [currentValue])
     useEffect(() => {
         dispatch(load_tweet());
+        dispatch(removeMessage());
         console.log("Tweets");
     },[isAuthenticated])
-    const handleTweetButton =()=>{
+    const handleTweetButton = () => {
         dispatch(addTweet(makeTweet));
+    };
+    const showEmojiHandle = () => {
+        setShowEmoji(!showEmoji);
+        console.log("Emoji")
     }
     return (
             <>
@@ -70,7 +81,9 @@ function Home() {
                                 <BsImage />
                                 <AiOutlineFileGif />
                                 <BiPoll />
-                                <BsEmojiSmile />
+                                <div onClick={showEmojiHandle}>
+                                    <BsEmojiSmile />
+                                </div>
                                 <GrSchedulePlay />
                                 <GrLocation/>
                             </div>
@@ -81,7 +94,19 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <Tweet data={tweets}/>
+            <Tweet data={tweets} />
+            {
+                showEmoji && (
+                    <Picker
+                        data={data}
+                        style={{
+                            position: "absolute",
+                            marginTop: -18,
+                            display: `${showEmoji}`,
+                            zIndex:10
+                        }}
+                        onEmojiSelect={console.log} />)
+            }
             </>
      
     )

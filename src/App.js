@@ -12,9 +12,36 @@ import Communities from './components/Communities';
 import Explore from './components/Explore';
 import Messages from './components/Messages';
 import Notifications from './components/Notifications';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
+import React, { useState, useRef, useEffect } from 'react';
+import {useDispatch } from 'react-redux';
+import { removeMessage } from './redux/slices/tweetSlice';
 
 function App() {
+  const [message, setMessage] = useState('');
+  const messageUser = useSelector(state => state.userReducer.message);
+  const messageTweet = useSelector(state => state.tweetReducer.message);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setMessage(messageTweet);
+  }, [messageTweet]);
+  useEffect(() => {
+    setMessage(messageUser);
+  }, [messageUser]);
+  useEffect(() => {
+    if (message !== null) {
+      toast(message);
+      dispatch(removeMessage());
+      console.log(message);
+    }
+    },[message])
   return (
+    <>
+      <ToastContainer
+        autoClose={1000}
+      />
     <Routes>
       <Route path='/' element={<Main />}>
         <Route index element={<Home />}/>
@@ -28,6 +55,7 @@ function App() {
       </Route>
       <Route path='/register' element={<Register/>} />
     </Routes>
+    </>
     // <Profile/>
   );
 }

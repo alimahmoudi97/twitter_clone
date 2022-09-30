@@ -146,7 +146,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 export const checkAuthenticated = () => async (dispatch) => {
-    if (localStorage.getItem('access')) {
+    if (localStorage.getItem(`access`)) {
         const config = {
             headers: {
                 "content-Type": "application/json",

@@ -5,16 +5,18 @@ import {Outlet, Route,Routes, useNavigate} from 'react-router-dom';
 import Search from './Search';
 import { useSelector } from 'react-redux';
 
-
 function Main() {
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
     useEffect(() => {
+        console.log("is not authenticate!");
         if (!isAuthenticated) {
             navigate("/register");
+            console.log("is not authenticate!");
         }
-    },[isAuthenticated, navigate])
+    }, [isAuthenticated, navigate]);
     return (
+        <>
         <div className='home-container'>
             <div className='sidebar-menu'>
                 <SidebarMenu/>
@@ -28,6 +30,7 @@ function Main() {
                 <Trends/>
             </div>
         </div>
+        </>
     )
 }
 

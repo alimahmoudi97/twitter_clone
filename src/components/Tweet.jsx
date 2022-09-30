@@ -15,7 +15,7 @@ function Tweet({data}) {
         
         data.map((value,index) => {
             return (
-                <Link to="/tweetdetails">
+                <Link to="/tweetdetails" state={data}>
                 
                 <div className='tweet-box'>
                         <div className='tweet-container'>
@@ -30,7 +30,7 @@ function Tweet({data}) {
                             <div className='tweet-container-details'>
                                 <div className='tweet-user-info'>
                                     <div className='user-info'>
-                                        <span>Ali  </span>
+                                        {/* <span>Ali  </span> */}
                                         <span>{value.author.username}</span>
                                         <span>. Mar 19</span>
                                     </div>

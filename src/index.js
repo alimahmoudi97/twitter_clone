@@ -7,6 +7,8 @@ import { BrowserRouter} from 'react-router-dom';
 import  store  from './redux/store';
 import { Provider } from 'react-redux';
 import axios from 'axios';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore} from 'redux-persist'
 const baseURL = "https://twitterapis.herokuapp.com/";
 
 export const axiosInstance = axios.create({
@@ -17,13 +19,12 @@ export const axiosInstance = axios.create({
     accept:"application/json",
   }
 })
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+          <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

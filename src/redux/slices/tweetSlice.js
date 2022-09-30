@@ -39,15 +39,18 @@ export const tweetReducer = createSlice({
         },
         tweetAdded: (state, { payload }) => {
             state.tweets.unshift(payload);
+            state.message = "successfully tweeted!";
         },
         tweetDetail: (state, { payload }) => {
             state.singleTweet = payload;
         },
         deletedSuccess: (state, { payload }) => {
             state.tweets = state.tweets.filter((i) => i.id !== payload);
+            state.message = "successfully deleted!";
         },
         deletedMarkSuccess: (state, { payload }) => {
             state.bookmarksList = state.bookmarksList.filter((i) => i.id !== payload);
+            state.message = "successfully deleted!";
         },
         setMeta: (state, { payload }) => {
             state.meta = payload;

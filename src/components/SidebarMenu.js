@@ -29,32 +29,29 @@ function SidebarMenu() {
   const temptData = useSelector(state => state.isLoading);
   const [data, setData] = useState('');
   const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
-
-  const fetchData = (e) => {
-    e.preventDefault();
-    // axios.get("https://twitterapis.herokuapp.com/user/ali91/").then((response) => {
-    //   setData(response)
-    // }).catch((error) => {
-    //   console.log(error)
-    // });
-    dispatch(getTokens(
-      "gholamreza123@gmail.com",
-      "gh@gh4321"
-    ));
-  }
+  const userStatus = useSelector((state) => state.userReducer.user);
+  // const id = useSelector((state) => state.userReducer.user.id);
+  const username = useSelector((state) => {
+    if (userStatus !== null) {
+      return state.userReducer.user.username
+    }
+  });
 
   const handleSignOut = () => {
     dispatch(logoutAct());
     dispatch(load_user());
     dispatch(checkAuthenticated());
-    // dispatch(resetDataTweet());
+    // dispatch({type:'store/reset'});
   }
 
   useEffect(() => {
     console.log(temptData);
     console.log(data);
     console.log(isAuthenticated);
-  },[temptData,data,isAuthenticated])
+  }, [temptData, data, isAuthenticated]);
+  // useEffect(() => {
+  //   console.log(`Id:${id}`)
+  // },[id])
   return (
       <div className='sidebar-menu-container'>
           
@@ -96,7 +93,7 @@ function SidebarMenu() {
               <span id='link-text'>More</span>
           </div>
           <div className='tweet-btn-sidebar'>
-          <span id='btn-text' onClick={fetchData}>Tweet</span>
+          <span id='btn-text'>Tweet</span>
           <RiQuillPenLine id='icon'/>
           </div>
               
@@ -107,11 +104,11 @@ function SidebarMenu() {
                     <CgProfile id='icon'/>
                 
                 <span className='account-info'>
-                    <span>Ali</span>
-                    <span>user name</span>
+                    {/* <span>Ali</span> */}
+                    <span>{isAuthenticated && username}</span>
                 </span>
                 
-                    <FiMoreHorizontal id='icon-three-dots'/>
+                    {/* <FiMoreHorizontal id='icon-three-dots'/> */}
                    
               </div>
           </div>

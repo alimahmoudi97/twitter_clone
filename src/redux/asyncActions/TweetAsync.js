@@ -73,8 +73,9 @@ export const addTweet = (uploadData) => async (dispatch) => {
     try {
         const res = await axiosInstance.post(`tweets/`, uploadData, {
             headers: {
-            Authorization: `JWT ${localStorage.getItem('access')}`
-        }});
+                Authorization: `JWT ${localStorage.getItem('access')}`
+            }
+        });
         dispatch(setUploading(false));
         dispatch(tweetAdded(res.data));
         dispatch(setMessage(`Tweet Added!`));

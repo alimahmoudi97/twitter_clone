@@ -14,6 +14,7 @@ import { register } from "../redux/asyncActions/UserAsync";
 const SignInPopUp = () => {
     const user = useSelector((state) => state.userReducer);
     const { isAuthenticated } = user;
+    const userStatus = useSelector((state) => state.userReducer.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -30,9 +31,11 @@ const SignInPopUp = () => {
         dispatch(login(email, password));
     }
     useEffect(() => {
-        isAuthenticated && navigate("/");
-        // console.log(isAuthenticated);
-    },[navigate,isAuthenticated])
+        if (isAuthenticated && (userStatus !== null)) {
+            navigate("/");
+        }
+        // console.log("user Id:"+user.id);
+    },[navigate, isAuthenticated, userStatus])
     return (
         <>
             <img className="register-logo-twitter" src={logo_register} alt="" />
@@ -79,6 +82,7 @@ const SignInPopUp = () => {
             <div id="botton-four" className="register-botton">
                 <span>Forgot password?</span>
             </div>
+            
         </>
     )
 };
@@ -91,6 +95,7 @@ const SignUpPopUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
+    const user = useSelector((state) => state.userReducer.user);
     const handleUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -113,11 +118,11 @@ const SignUpPopUp = () => {
     }
     useEffect(() => {
         console.log("Aligfdh");
-        if (isAuthenticated) {
+        if (isAuthenticated && (user!==null)) {
             console.log("Register:"+isAuthenticated);
             navigate("/profile");
         }
-    },[isAuthenticated, navigate]);
+    },[isAuthenticated, navigate, user]);
     return (
         <>
             <div className="signup-popup-container">
@@ -189,7 +194,7 @@ const Register = () => {
     }
     return (
         <>
-            <div className={toggle?"register-lable-container":'inactive'}>
+        <div className={toggle?"register-lable-container":'inactive'}>
             <div className="register-popup">
                 <div className="register-box">
                     <div className="register">
