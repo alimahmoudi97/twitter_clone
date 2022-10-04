@@ -36,7 +36,7 @@
     border-radius: 50%;
 }
 .tweet-details-container .text-tweet-details{
-    max-width:95%;
+    min-width:95%;
     align-self: center;
 }
 .text-tweet-details p{
@@ -65,4 +65,8 @@
     margin-top: 1em;
     padding-top: 1em;
     border-top: 1px solid rgb(47,51,54);
+}
+.tweet-icons-group 
+.reply-icon,.retweet-icon,.like-icon,.sent-icon{
+    cursor: pointer;
 }

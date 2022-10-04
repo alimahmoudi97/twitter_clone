@@ -18,6 +18,7 @@ import {
 } from './../slices/userSlice';
 import axios from 'axios';
 import { axiosInstance } from "../../index";
+import { setMessage } from '../slices/tweetSlice';
 const url = "https://twitterapis.herokuapp.com/";
 
 export const load_user = () => async (dispatch) => {
@@ -112,6 +113,19 @@ export const userProfile = (username) => async (dispatch) => {
         dispatch(profileUserSuccess(res.data));
     } catch (error) {
         dispatch(userFail())
+        dispatch(setLoading(false));
+    }
+};
+export const userEdit = (username, data) => async (dispatch) => {
+    try {
+        const res = await axiosInstance.put(`user/${username}/`, data);
+        dispatch(setLoading(false));
+        dispatch(profileUserSuccess(res.data));
+        dispatch(load_user());
+        dispatch(setMessage("Successfully Edited"));
+    } catch (error) {
+        dispatch(userFail());
+        dispatch(setMessage("Something's wrong!"));
         dispatch(setLoading(false));
     }
 };

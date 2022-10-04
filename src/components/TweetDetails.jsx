@@ -11,17 +11,45 @@ import { BsImage,BsEmojiSmile } from 'react-icons/bs';
 import { AiOutlineFileGif } from 'react-icons/ai';
 import { BiPoll } from 'react-icons/bi';
 import { GrSchedulePlay, GrLocation } from 'react-icons/gr';
+import { useLocation } from 'react-router-dom';
+import { addComment, tweet_comments } from "../redux/asyncActions/CommentAsync";
+import Tweet from "./Tweet";
+import { likeTweet } from "../redux/asyncActions/TweetAsync";
 
 const TweetDetails = () => {
     const textAreaRef = useRef(null);
-    const [currentValue, setCurrentValue] = useState("");
-
+    const commentList = useSelector(state => state.commentReducer.commentList);
+    const [comment, setComment] = useState("");
+    // const [comment, setComment] = useState("");
+    const [likeCount, setLikeCount] = useState(0);
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const data = location.state;
+    
+    const handleReplyButton = () => {
+        dispatch(addComment(data.id, comment, data.id, false));
+        setComment("");
+        // dispatch(tweet_comments(data.id));
+    }
+    const likeCounterBTN = () => {
+        dispatch(likeTweet(data.id));
+    }
     useEffect(() => {
         textAreaRef.current.style.height = "0px";
         const scrollHeight = textAreaRef.current.scrollHeight;
-        textAreaRef.current.style.height = scrollHeight+"px";
-    }, [currentValue])
+        textAreaRef.current.style.height = scrollHeight + "px";
+    }, [comment]);
+    useEffect(() => {
+        dispatch(tweet_comments(data.id));
+        // console.log(commentList);
+    },[data.id, dispatch])
+    useEffect(() => {
+        setLikeCount(data.like_count);
+        console.log(data.like_count);
+    },[data.like_count,dispatch])
     return (
+        <>
+
         <div className="tweet-details-box">
             <div className="tweet-details-container">
                 <div className="tweet-details-info-user-container">
@@ -34,7 +62,7 @@ const TweetDetails = () => {
                     <BsThreeDots/>
                 </div>
                 <div className="text-tweet-details">
-                    <p>HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</p>
+                    <p>{data.title}</p>
                     <a>Translate Tweet</a>
                     <div>
                         <span>1:44 AM · Jul 30, 2022</span>
@@ -42,24 +70,36 @@ const TweetDetails = () => {
                     </div>
                     <div className="tweet-reaction">
                         <span>1 Retweet</span>
-                        <span> 34 Likes</span>
+                        <span> {data.like_count} Likes</span>
                     </div>
                     <div className='tweet-icons-group'>
-                        <div className='reply-icon'>
+                        <div
+                                className='reply-icon'
+                                // onClick={replyCounterBTN}
+                            >
                             <SiTheconversation id='icon'/>
-                            <div>131</div>
+                                { data.comment_count !==0 &&
+                                            <div>{data.comment_count}</div>
+                                }
                         </div>
                         <div className='retweet-icon'>
                             <FaRetweet id='icon'/>
-                            <div>131</div>
+                                {data.share_count !== 0 &&
+                                        <div>{data.share_count}</div>
+                                }
                         </div>
-                        <div className='like-icon'>
+                            <div
+                                className='like-icon'
+                                onClick={likeCounterBTN}
+                            >
                             <BsHeart id='icon'/>
-                            <div>131</div>
+                                {data.like_count !== 0 &&
+                                    <div>{likeCount}</div>
+                                }
                         </div>
                         <div className='sent-icon'>
                             <BsUpload id='icon'/>
-                            <div>131</div>
+                            {/* <div>131</div> */}
                         </div>
                     </div>
                     <div className='write-tweet-box' style={{
@@ -82,9 +122,9 @@ const TweetDetails = () => {
                             {/* <span placeholder='ff'></span> */}
                             <textarea
                                 ref={textAreaRef}
-                                value={currentValue}
+                                value={comment}
                                 onChange={(e) => {
-                                    setCurrentValue(e.target.value)
+                                    setComment(e.target.value)
                                 }}
                                 placeholder="What's happening?"></textarea>
                             {/* <input placeholder="What's happening?"/> */}
@@ -99,7 +139,10 @@ const TweetDetails = () => {
                                 <GrLocation/>
                             </div>
                             <div className='tweet-btn'>
-                                <button>Tweet</button>
+                                    <button
+                                        disabled={!comment}
+                                        onClick={handleReplyButton}
+                                    >Reply</button>
                             </div>
                         </div>
                     </div>
@@ -108,6 +151,9 @@ const TweetDetails = () => {
                 
             </div>
         </div>
+        <Tweet data={commentList} />
+                        
+        </>
     )
 }
 

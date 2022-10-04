@@ -139,8 +139,13 @@ export const likeTweet = (id) => async (dispatch) => {
     try {
         const res = await axiosInstance.post(`tweets/love/like-unlike/`, {
             pk: id
+        }, {
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('access')}`
+            }  
         });
         dispatch(likeUnlikeTweet({ ...res, id: id }));
+        // console.log(res);
     } catch (error) {
         console.log(error);
         dispatch(setMessage(`Somthing went wrong!`));

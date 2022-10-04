@@ -40,7 +40,7 @@ function Profile() {
           <span id="follow">Following</span>
         </div>
         <div>
-          <sapn id="num-user-follow">10</sapn>
+          <span id="num-user-follow">10</span>
           <span id="follow">Followers</span>
         </div>
       </div>

@@ -12,10 +12,9 @@ import TimeLine from './TimeLine.js';
 
 function Tweet({data}) {
     return (
-        
         data.map((value,index) => {
             return (
-                <Link to="/tweetdetails" state={data}>
+                <Link to="/tweetdetails" state={value}>
                 
                 <div className='tweet-box'>
                         <div className='tweet-container'>
@@ -40,71 +39,37 @@ function Tweet({data}) {
                                     <span>Replying to @mahmoudi45</span>
                                 </div>
                                 <div className='tweet-user-text'>
-                                    <p>{value.title}</p>
+                                    {/* <p>{value.body}</p> */}
+                                    {value.body !== null && <p>{value.body}</p>}
+                                    {value.title !== null && <p>{ value.title}</p>}
                                 </div>
                                 <div className='tweet-icons-group'>
                                             <div className='reply-icon'>
-                                                <SiTheconversation id='icon'/>
-                                                <div>131</div>
+                                        <SiTheconversation id='icon' />
+                                        {value.comment_count !== 0 &&
+                                            <div>{ value.comment_count}</div>
+                                        }
                                             </div>
                                             <div className='retweet-icon'>
-                                                <FaRetweet id='icon'/>
-                                                <div>131</div>
+                                        <FaRetweet id='icon' />
+                                        {value.share_count !== 0 &&
+                                            <div>{value.share_count}</div>
+                                        }
                                             </div>
                                             <div className='like-icon'>
-                                                <BsHeart id='icon'/>
-                                                <div>131</div>
+                                        <BsHeart id='icon' />
+                                        {value.like_count !== 0 &&
+                                        
+                                            <div>{ value.like_count}</div>
+                                        }
                                             </div>
                                             <div className='sent-icon'>
                                                 <BsUpload id='icon'/>
-                                                <div>131</div>
+                                                {/* <div>131</div> */}
                                             </div>
                                     </div>
                             </div>
-                        </div>
-                    {(index.replyersLenght >=1) && (
-                        
-                        <div className='tweet-container'>
-                            <div className='tweet-avatar'>
-                                <img src={avatar} alt=""/>
-                            </div>
-                            <div className='tweet-container-details'>
-                                <div className='tweet-user-info'>
-                                    <div className='user-info'>
-                                        <span>Ali</span>
-                                        <span>mahmoudi45</span>
-                                        <span>. Mar 19</span>
-                                    </div>
-                                    <BsThreeDots id='icon'/>
-                                </div>
-                                <div className='tweet-user-replying-to'>
-                                    <span>Replying to @mahmoudi45</span>
-                                </div>
-                                <div className='tweet-user-text'>
-                                    <p>HI</p>
-                                </div>
-                                <div className='tweet-icons-group'>
-                                            <div className='reply-icon'>
-                                                <SiTheconversation id='icon'/>
-                                                <div>131</div>
-                                            </div>
-                                            <div className='retweet-icon'>
-                                                <FaRetweet id='icon'/>
-                                                <div>131</div>
-                                            </div>
-                                            <div className='like-icon'>
-                                                <BsHeart id='icon'/>
-                                                <div>131</div>
-                                            </div>
-                                            <div className='sent-icon'>
-                                                <BsUpload id='icon'/>
-                                                <div>131</div>
-                                            </div>
-                                    </div>
-                            </div>
-                        </div>
-                        )}
-                    
+                        </div>                    
                 </div>
             </Link>
             )
