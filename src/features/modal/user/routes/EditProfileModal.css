@@ -20,7 +20,7 @@
     /* align-self: flex-start; */
 }
 .profile-modal-box{
-    background-color: tomato;
+    background-color: rgba(0, 0, 0, 0.808);
     width: 40vw;
     height: 50vh;
     overflow: scroll;
@@ -43,7 +43,7 @@
 }
 .image-cover-box{
     position: relative;
-    height: 10em;
+    height: 20em;
     background-color: rgb(81, 255, 0);
 }
 .image-cover-box .icon-container {
@@ -62,7 +62,7 @@
     /* width: 100%; */
     transform: translate(50%,-50%);
     /* margin-top:-10em; */
-    z-index: 10;
+    /* z-index: 10; */
 }
 .icon-container .camera-icon{
     width: 3em;
@@ -98,22 +98,181 @@
 }
 /* ---------avatar box------- */
 .avatar-box{
-    height: 5.5em;
-    width: 5.5em;
+    height: 8em;
+    width: 8em;
     border-radius: 50%;
     background-color: rgb(0, 0, 0,100);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -6%;
+    margin-top: -10%;
     margin-left: 5%;
-    z-index: 10;
+    /* z-index: 10; */
     position: relative;
 }
 .avatar-box img{
-    height: 5em;
-    width: 5em;
+    height: 7.5em;
+    width: 7.5em;
     border-radius: 50%;
+}
+.avatar-box .icon-camera-container{
+    display: flex;
+    flex-direction: row;
+    /* background-color: blue; */
+    justify-content:space-between;
+    align-items: center;
+    position:absolute;
+    top:50%;
+    right: 50%;
+    width: 3em;
+    height: 3em;
+    transform: translate(50%,-50%);
     /* z-index: 10; */
-
+}
+.icon-camera-container .camera-icon{
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(109, 102, 93,0.5);
+}
+/*----------username input-------------*/
+.profile-modal-box .input-username-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-top: 1em;
+}
+.input-username-container:focus{
+    border: 1px solid blue;
+    /* background-color: rgb(8, 255, 255); */
+}
+.input-username-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 90%;
+}
+.input-username-container label{
+    color: white;
+    
+}
+.input-username-container input{
+    background-color: transparent;
+    /* height: 2em; */
+    color: white;
+    font-size: 1.5em;
+    border: 0;
+}
+.input-username-container input:focus{
+    outline: none;
+    
+}
+/*----------bio input--------*/
+.profile-modal-box .input-bio-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-top: 1em;
+}
+.input-bio-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 90%;
+}
+.input-bio-container:focus{
+    border: 1px solid blue;
+}
+.input-bio-container label{
+    color: white;
+    
+}
+.input-bio-container input{
+    background-color: transparent;
+    /* height: 2em; */
+    color: white;
+    height: 3em;
+    font-size: 1.5em;
+    border: 0;
+}
+.input-bio-container input:focus{
+    outline: none;
+}
+/*---------location input--------*/
+.profile-modal-box .input-location-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-top: 1em;
+}
+.input-location-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 90%;
+}
+.input-location-container:focus{
+    border: 1px solid blue;
+}
+.input-location-container label{
+    color: white;
+    
+}
+.input-location-container input{
+    background-color: transparent;
+    /* height: 2em; */
+    color: white;
+    /* height: 3em; */
+    font-size: 1.5em;
+    border: 0;
+}
+.input-location-container input:focus{
+    outline: none;
+}
+/*----------website input---------*/
+.profile-modal-box .input-website-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-top: 1em;
+}
+.input-website-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 90%;
+}
+.input-website-container:focus{
+    border:1px solid blue;
+}
+.input-website-container label{
+    color: white;
+    
+}
+.input-website-container input{
+    background-color: transparent;
+    /* height: 2em; */
+    color: white;
+    /* height: 3em; */
+    font-size: 1.5em;
+    border: 0;
+}
+.input-website-container input:focus{
+    outline: none;
 }
