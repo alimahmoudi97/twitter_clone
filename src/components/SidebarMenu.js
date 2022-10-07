@@ -11,7 +11,7 @@ import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
 import { RiQuillPenLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import{register,getTokens, logoutAct, load_user, checkAuthenticated} from './../redux/asyncActions/UserAsync';
+import{register,getTokens, logoutAct, load_user, checkAuthenticated, userProfile} from './../redux/asyncActions/UserAsync';
 import { CgProfile } from 'react-icons/cg';
 import { resetDataTweet } from '../redux/asyncActions/TweetAsync';
 
@@ -43,7 +43,10 @@ function SidebarMenu() {
     dispatch(checkAuthenticated());
     // dispatch({type:'store/reset'});
   }
-
+  const handleProfilePage = () => {
+    dispatch(userProfile(userStatus.username));
+    console.log("handleProfilePage");
+  }
   useEffect(() => {
     console.log(temptData);
     console.log(data);
@@ -86,7 +89,7 @@ function SidebarMenu() {
           </div>
            <div id='profiles' className='sidebar-menu-items'>
                   <CgProfile id='icon' />
-                  <Link to="profile" style={{textDecoration:'none'}}><span id='link-text'>Profile</span></Link>
+                  <Link to="profile" style={{textDecoration:'none'}} onClick={handleProfilePage}><span id='link-text'>Profile</span></Link>
           </div>
            <div id='more' className='sidebar-menu-items'>
               <HiOutlineDotsCircleHorizontal id='icon' />

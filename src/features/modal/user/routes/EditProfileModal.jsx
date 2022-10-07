@@ -1,40 +1,82 @@
-import React, {useRef} from 'react';
+import React, {useRef,useState} from 'react';
 import './EditProfileModal.css';
 import { IoMdClose } from 'react-icons/io';
 import { BsCamera } from 'react-icons/bs';
+import ReactDom from 'react-dom';
+import { useDispatch } from 'react-redux';
+import { userEdit } from '../../../../redux/asyncActions/UserAsync';
 
-const EditProfileModal = () => {
-    const inputRefrenceUsername = useRef(null);
-    const inputRefrenceBio = useRef(null);
-    const inputRefrenceLocation = useRef(null);
-    const inputRefrenceWebsite = useRef(null);
+const EditProfileModal = ({ onClose, toggle,user }) => {
+    
+    const dispatch = useDispatch();
+    const [username, setUsername] = useState('');
+    const [userBio, setUserBio] = useState('');
+    const [userLocation, setUserLocation] = useState('');
+    const [userWebsite, setUserWebsite] = useState('');
+    const [isFocusUsername, setFocusUsername] = useState(false);
+    const [isFocusBio, setFocusBio] = useState(false);
+    const [isFocusLocation, setFocusLocation] = useState(false);
+    const [isFocusWebsite, setFocusWebsite] = useState(false);
+    const [cover, setCover] = useState();
+    const [avatar, setAvatar] = useState();
+
+    const handleCover = (e) => {
+        setCover(e.target.file[0]);
+        
+    }
+    const handleAvatar = (e) => {
+        setAvatar(e.target.file[0]);
+    }
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+    }
+    const handleUserBio = (e) => {
+        setUserBio(e.target.value);
+    }
+    const handleUserLocation = (e) => {
+        setUserLocation(e.target.value);
+    }
+    const handleUserWebsite = (e) => {
+        setUserWebsite(e.target.value);
+    }
 
     const handleFocusInputUsername = () => {
-        inputRefrenceUsername.current.focus();
-        console.log("clicked!");
+        setFocusUsername(!isFocusUsername);
     }
     const handleFocusInputBio = () => {
-        inputRefrenceBio.current.focus();
+        setFocusBio(!isFocusBio);
     }
     const handleFocusInputLocation = () => {
-        inputRefrenceLocation.current.focus();
+        setFocusLocation(!isFocusLocation);
     }
     const handleFocusInputWebsite = () => {
-        inputRefrenceWebsite.current.focus();
+        setFocusWebsite(!isFocusWebsite);
     }
-    return (
-        <div className="profile-modal-container">
+    const handleSaveBtn = () => {
+        const dataProfile = new FormData();
+        cover && dataProfile.append("cover_image", cover);
+        avatar && dataProfile.append("avatar", avatar);
+        dataProfile.append("bio", userBio);
+        dataProfile.append("nickname", username);
+        dataProfile.append("location",userLocation);
+        dispatch(userEdit(user.username,dataProfile));
+    }
+    return ReactDom.createPortal(
+        <div className={toggle?"profile-modal-container":"inactive"}>
             <div className='profile-modal-box'>
                 <div className='header-profile-modal'> 
                     <div className='header-title'>
-                        <div>
-                            <IoMdClose/>
+                        <div onClick={onClose} id="md-close-icon">
+                            <IoMdClose style={{width:'2em',height:'2em'}}/>
                         </div>
                         <span>
                             Edit Profile
                         </span>
                     </div>
-                    <button>
+                    <button
+                        id="buttom-save"
+                        onClick={handleSaveBtn}
+                    >
                         Save
                     </button>
                 </div>
@@ -44,7 +86,10 @@ const EditProfileModal = () => {
                     </div>
                     <div className='icon-container'>
                         <div className='camera-icon'>
-                            <BsCamera id="camera"/>
+                            <label htmlFor="file-input-camera">
+                                <BsCamera id="camera" />
+                            </label>
+                            <input id="file-input-camera" type="file" onChange={handleCover}/>
                         </div>
                         <div className='close-icon'>
                             <IoMdClose id="close"/>
@@ -55,56 +100,84 @@ const EditProfileModal = () => {
                     <img src="https://www.w3schools.com/w3css/img_lights.jpg" alt="" />
                     <div className='icon-camera-container'>
                         <div className='camera-icon'>
-                            <BsCamera id="camera"/>
+                            <label htmlFor="file-input-camera">
+                                <BsCamera id="camera" />
+                            </label>
+                            <input id="file-input-camera" type="file" onChange={handleAvatar}/>
                         </div>
                     </div>
                 </div>
                 <div className='input-username-box'>
                     <div
-                        ref={inputRefrenceUsername}
-                        onClick={handleFocusInputUsername}
-                        tabIndex={-1}
-                        className='input-username-container'
+                        tabIndex={1}
+                        onFocus={handleFocusInputUsername}
+                        onBlur={handleFocusInputUsername}
+                        // onClick={handleFocusInputUsername}
+                        // tabIndex={1}
+                        className={"input-username-container"+(isFocusUsername?" focus":"")}
                     >
-                        <label for='username'>name</label>
-                        <input id='username'/>
+                        <label htmlFor='username'>name</label>
+                        <textarea
+                            // ref={inputRefrenceUsername}
+                            id='username'
+                            type="text"
+                            value={username}
+                            onChange={handleUsername}
+                        />
                     </div>
                 </div>
                 <div className='input-bio-box'>
                     <div
-                        ref={inputRefrenceBio}
-                        onClick={handleFocusInputBio}
-                        tabIndex={-1}
-                        className='input-bio-container'
+                        tabIndex={2}
+                        onFocus={handleFocusInputBio}
+                        onBlur={handleFocusInputBio}
+                        className={'input-bio-container'+(isFocusBio?" focus":"")}
                     >
-                        <label for='bio'>bio</label>
-                        <input id='bio'/>
+                        <label htmlFor='bio'>bio</label>
+                        <textarea
+                            id='bio'
+                            type="text"
+                            value={userBio}
+                            onChange={handleUserBio}
+                        />
                     </div>
                 </div>
                 <div className='input-location-box'>
                     <div
-                        className='input-location-container'
-                        ref={inputRefrenceLocation}
-                        onClick={handleFocusInputLocation}
-                        tabIndex={-1}
+                        tabIndex={3}
+                        className={'input-location-container'+(isFocusLocation?" focus":"")}
+                        onFocus={handleFocusInputLocation}
+                        onBlur={handleFocusInputLocation}
                     >
-                        <label for='location'>location</label>
-                        <input id='location'/>
+                        <label htmlFor='location'>location</label>
+                        <textarea
+                            id='location'
+                            type="text"
+                            value={userLocation}
+                            onChange={handleUserLocation}
+                        />
                     </div>
                 </div>
                 <div className='input-website-box'>
                     <div
-                        className='input-website-container'
-                        ref={inputRefrenceWebsite}
-                        onClick={handleFocusInputWebsite}
-                        tabIndex={-1}
+                        tabIndex={4}
+                        className={'input-website-container'+(isFocusWebsite?" focus":"")}
+                        onFocus={handleFocusInputWebsite}
+                        onBlur={handleFocusInputWebsite}
                     >
-                        <label for='website'>website</label>
-                        <input id='website'/>
+                        <label htmlFor='website'>website</label>
+                        <textarea
+                            id='website'
+                            type="text"
+                            value={userWebsite}
+                            onChange={handleUserWebsite}
+                        />
                     </div>
                 </div>
             </div>
         </div>
+        ,
+        document.getElementById('modal')
     )
 }
 export default EditProfileModal;

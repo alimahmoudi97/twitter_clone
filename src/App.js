@@ -39,26 +39,26 @@ function App() {
     }
     },[message])
   return (
-    // <>
-    //   <ToastContainer
-    //     autoClose={1000}
-    //   />
-    // <Routes>
-    //   <Route path='/' element={<Main />}>
-    //     <Route index element={<Home />}/>
-    //     <Route path="bookmarks" element={<Bookmarks/>} />
-    //     <Route path="communities" element={<Communities/>} />
-    //     <Route path="explore" element={<Explore/>} />
-    //     <Route path="messages" element={<Messages/>} />
-    //     <Route path="notifications" element={<Notifications/>} />
-    //     <Route path="profile" element={<Profile />} />
-    //     <Route path='tweetdetails' element={<TweetDetails />} />
-    //   </Route>
-    //   <Route path='/register' element={<Register/>} />
-    // </Routes>
-    // </>
+    <>
+      <ToastContainer
+        autoClose={1000}
+      />
+    <Routes>
+      <Route path='/' element={<Main />}>
+        <Route index element={<Home />}/>
+        <Route path="bookmarks" element={<Bookmarks/>} />
+        <Route path="communities" element={<Communities/>} />
+        <Route path="explore" element={<Explore/>} />
+        <Route path="messages" element={<Messages/>} />
+        <Route path="notifications" element={<Notifications/>} />
+        <Route path="profile" element={<Profile />} />
+        <Route path='tweetdetails' element={<TweetDetails />} />
+      </Route>
+      <Route path='/register' element={<Register/>} />
+    </Routes>
+    </>
     // <Profile/>
-    <EditProfileModal/>
+    // <EditProfileModal/>
   );
 }
 

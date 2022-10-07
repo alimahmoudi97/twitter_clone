@@ -1,10 +1,18 @@
 .profile-modal-container{
-    background-color:white;
+    background-color:rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    position:fixed;
+    top:50%;
+    left:50%;
+    z-index: 1000;
+    transform: translate(-50%,-50%);
+}
+.inactive{
+    display:none;
 }
 .header-profile-modal{
     display: flex;
@@ -13,7 +21,7 @@
     justify-content:space-between;
     width: 100%;
     height: 10%;
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.5);
     position:sticky;
     top: 0;
     z-index: 10;
@@ -21,16 +29,34 @@
 }
 .profile-modal-box{
     background-color: rgba(0, 0, 0, 0.808);
-    width: 40vw;
+    width: 30vw;
     height: 50vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    border-radius: 10px;
 }
 .header-profile-modal .header-title{
-    width: 20%;
-    background-color: blue;
+    width: 30%;
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-left: 1em;
+}
+.header-title span{
+    font-size: 1.5em;
+}
+.header-title>#md-close-icon{
+    cursor: pointer;
+}
+.header-profile-modal #buttom-save{
+    font-size: 1.5em;
+    border-radius: 50px;
+    border: 0;
+    width: 3em;
+    /* height: 1.6em; */
+    cursor: pointer;
+    margin-right: 1em;
 }
 .image-cover-box .image-container {
     height: 100%;
@@ -73,6 +99,13 @@
     cursor: pointer;
     border-radius: 50%;
     background-color: rgba(109, 102, 93,0.5);
+    /* position: relative; */
+}
+.icon-container .camera-icon:hover{
+    background-color: rgba(109, 102, 93,0.8);
+}
+.camera-icon>input{
+    display: none;
 }
 .icon-container .close-icon{
     width: 3em;
@@ -84,10 +117,14 @@
     border-radius: 50%;
     background-color: rgba(109, 102, 93,0.5);
 }
+.icon-container .close-icon:hover{
+    background-color: rgba(109, 102, 93,0.8);
+}
 .camera-icon #camera{
     width: 2em;
     height: 2em;
     color: white;
+    cursor: pointer;
     
 }
 .close-icon #close{
@@ -139,6 +176,9 @@
     border-radius: 50%;
     background-color: rgba(109, 102, 93,0.5);
 }
+.icon-camera-container .camera-icon:hover{
+    background-color: rgba(109, 102, 93,0.8);
+}
 /*----------username input-------------*/
 .profile-modal-box .input-username-box{
     display: flex;
@@ -152,10 +192,17 @@
     border: 1px solid blue;
     /* background-color: rgb(8, 255, 255); */
 }
+.input-username-container.focus{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: transparent;
+    width: 90%;
+}
 .input-username-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.541);
     background-color: transparent;
     width: 90%;
 }
@@ -163,14 +210,15 @@
     color: white;
     
 }
-.input-username-container input{
+.input-username-container textarea{
     background-color: transparent;
     /* height: 2em; */
     color: white;
     font-size: 1.5em;
     border: 0;
+    resize: none;
 }
-.input-username-container input:focus{
+.input-username-container textarea:focus{
     outline: none;
     
 }
@@ -183,10 +231,17 @@
     /* background-color: aqua; */
     margin-top: 1em;
 }
+.input-bio-container.focus{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: transparent;
+    width: 90%;
+}
 .input-bio-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.541);
     background-color: transparent;
     width: 90%;
 }
@@ -197,15 +252,16 @@
     color: white;
     
 }
-.input-bio-container input{
+.input-bio-container textarea{
     background-color: transparent;
     /* height: 2em; */
     color: white;
-    height: 3em;
+    height: 4em;
     font-size: 1.5em;
     border: 0;
+    resize:none;
 }
-.input-bio-container input:focus{
+.input-bio-container textarea:focus{
     outline: none;
 }
 /*---------location input--------*/
@@ -217,10 +273,17 @@
     /* background-color: aqua; */
     margin-top: 1em;
 }
+.input-location-container.focus{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: transparent;
+    width: 90%;
+}
 .input-location-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.541);
     background-color: transparent;
     width: 90%;
 }
@@ -231,15 +294,16 @@
     color: white;
     
 }
-.input-location-container input{
+.input-location-container textarea{
     background-color: transparent;
     /* height: 2em; */
     color: white;
     /* height: 3em; */
     font-size: 1.5em;
     border: 0;
+    resize: none;
 }
-.input-location-container input:focus{
+.input-location-container textarea:focus{
     outline: none;
 }
 /*----------website input---------*/
@@ -251,10 +315,17 @@
     /* background-color: aqua; */
     margin-top: 1em;
 }
+.input-website-container.focus{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: transparent;
+    width: 90%;
+}
 .input-website-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.541);
     background-color: transparent;
     width: 90%;
 }
@@ -265,14 +336,15 @@
     color: white;
     
 }
-.input-website-container input{
+.input-website-container textarea{
     background-color: transparent;
     /* height: 2em; */
     color: white;
     /* height: 3em; */
     font-size: 1.5em;
     border: 0;
+    resize: none;
 }
-.input-website-container input:focus{
+.input-website-container textarea:focus{
     outline: none;
 }

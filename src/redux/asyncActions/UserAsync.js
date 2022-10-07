@@ -108,7 +108,11 @@ export const verify = (uid, token) => async (dispatch) => {
 export const userProfile = (username) => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-        const res = await axiosInstance.get(`${url}user/${username}/`);
+        const res = await axiosInstance.get(`${url}user/${username}/`, {
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('access')}`
+            }
+        });
         dispatch(setLoading(false));
         dispatch(profileUserSuccess(res.data));
     } catch (error) {
@@ -118,7 +122,11 @@ export const userProfile = (username) => async (dispatch) => {
 };
 export const userEdit = (username, data) => async (dispatch) => {
     try {
-        const res = await axiosInstance.put(`user/${username}/`, data);
+        const res = await axiosInstance.put(`user/${username}/`, data, {
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('access')}`
+            }
+        });
         dispatch(setLoading(false));
         dispatch(profileUserSuccess(res.data));
         dispatch(load_user());
