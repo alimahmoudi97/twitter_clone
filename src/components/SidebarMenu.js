@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import './SidebarMenu.css';
 import { GrTwitter } from 'react-icons/gr';
@@ -14,7 +14,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import{register,getTokens, logoutAct, load_user, checkAuthenticated, userProfile} from './../redux/asyncActions/UserAsync';
 import { CgProfile } from 'react-icons/cg';
 import { resetDataTweet } from '../redux/asyncActions/TweetAsync';
-
+import { MessagePage } from './Main';
 const tweet = {
   tweets: ["hello world"],
   isLoading: false,
@@ -30,6 +30,7 @@ function SidebarMenu() {
   const [data, setData] = useState('');
   const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
   const userStatus = useSelector((state) => state.userReducer.user);
+  const{isMessagePage,setIsMessagePage} =useContext(MessagePage);
   // const id = useSelector((state) => state.userReducer.user.id);
   const username = useSelector((state) => {
     if (userStatus !== null) {
@@ -46,6 +47,13 @@ function SidebarMenu() {
   const handleProfilePage = () => {
     dispatch(userProfile(userStatus.username));
     console.log("handleProfilePage");
+  }
+  const handlePage = (page) => {
+    setIsMessagePage({
+      value: true,
+      page:page
+    });
+    console.log(page);
   }
   useEffect(() => {
     console.log(temptData);
@@ -64,32 +72,32 @@ function SidebarMenu() {
           </div>
           <div id='home' className='sidebar-menu-items'>
                 <RiHome7Fill id='icon' />
-                <Link to="/" style={{textDecoration:'none'}}><span id='link-text'>Home</span></Link>  
+                <Link to="/" style={{textDecoration:'none'}} onClick={()=>handlePage("")}><span id='link-text'>Home</span></Link>  
           </div>
            <div id='explore' className='sidebar-menu-items'>
                   <FiHash id='icon' />
-                  <Link to="explore" style={{textDecoration:'none'}}><span id='link-text'>Explore</span></Link>
+                  <Link to="explore" style={{textDecoration:'none'}} onClick={()=>handlePage("explore")}><span id='link-text'>Explore</span></Link>
           </div>
            <div id='communities' className='sidebar-menu-items'>
                   <BsPeopleFill id='icon' />
-                  <Link to="communities" style={{textDecoration:'none'}}><span id='link-text'>Communities</span></Link>
+                  <Link to="communities" style={{textDecoration:'none'}} onClick={()=>handlePage("communities")}><span id='link-text'>Communities</span></Link>
           </div>
 
            <div id='notifications' className='sidebar-menu-items'>
                   <IoMdNotifications id='icon' />
-                  <Link to="notifications" style={{textDecoration:'none'}}><span id='link-text'>Notifications</span></Link>
+                  <Link to="notifications" style={{textDecoration:'none'}} onClick={()=>handlePage("notifications")}><span id='link-text'>Notifications</span></Link>
           </div>
            <div id='messages' className='sidebar-menu-items'>
                   <FiMail id='icon' />
-                  <Link to="messages" style={{textDecoration:'none'}}><span id='link-text'>Messages</span></Link>
+                  <Link to="messages" style={{textDecoration:'none'}} onClick={()=>handlePage("messages")}><span id='link-text'>Messages</span></Link>
           </div>
            <div id='bookmarks' className='sidebar-menu-items'>
                   <BsFillBookmarkFill id='icon' />
-                  <Link to="bookmarks" style={{textDecoration:'none'}}><span id='link-text'>Bookmarks</span></Link>
+                  <Link to="bookmarks" style={{textDecoration:'none'}}  onClick={()=>handlePage("bookmarks")}><span id='link-text'>Bookmarks</span></Link>
           </div>
            <div id='profiles' className='sidebar-menu-items'>
                   <CgProfile id='icon' />
-                  <Link to="profile" style={{textDecoration:'none'}} onClick={handleProfilePage}><span id='link-text'>Profile</span></Link>
+          <Link to="profile" style={{ textDecoration: 'none' }} onClick={() => { handleProfilePage();handlePage("profile") }}><span id='link-text'>Profile</span></Link>
           </div>
            <div id='more' className='sidebar-menu-items'>
               <HiOutlineDotsCircleHorizontal id='icon' />

@@ -1,0 +1,25 @@
+.private-message-conatiner{
+    position: relative;
+    /* width: 90em; */
+    height: 90%;
+}
+.private-message-chat{
+    display: flex;
+}
+.msg-chat{
+    background-color: burlywood;
+    max-width: 25em;
+    max-height: fit-content;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+.private-message-input{
+    position:fixed;
+    width:50%;
+    background-color: aqua;
+    bottom: 0;
+}
+.private-message-input input{
+    /* width: 100%; */
+}

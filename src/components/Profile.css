@@ -2,6 +2,7 @@
     /* background-color: aqua; */
     /* width: 100vw; */
     /* height: 100vh; */
+    border-bottom: 1px solid white;
 }
 .profile-background-image img{
     width: 100%;

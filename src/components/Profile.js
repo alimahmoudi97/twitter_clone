@@ -6,21 +6,34 @@ import { GoLocation } from 'react-icons/go';
 import { BsCalendar2Date } from 'react-icons/bs';
 import EditProfileModal from '../features/modal/user/routes/EditProfileModal';
 import { useSelector } from 'react-redux';
+import ClipLoader from "react-spinners/ClipLoader";
+import Tweet from './Tweet';
 
 function Profile() {
   const [istoggle, setTogle] = useState(false);
   const user = useSelector(state => state.userReducer.user);
   const profileUser = useSelector(state => state.userReducer.profileUser);
+  const userReducer = useSelector(state => state.userReducer);
+  const isLoading = useSelector((state) => state.tweetReducer.isLoading);
+  const tweets = useSelector((state) => state.tweetReducer.tweets);
   const handleProfileModal = () => {
     setTogle(!istoggle);
     console.log("Modal Edit");
     console.log(istoggle);
   }
   return (
+    userReducer.isLoading ?
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height:'100vh'
+    }}>
+        <ClipLoader color="blue" loading={userReducer.isLoading} size={70}/>
+    </div>
+      :
     <>
-      
       <EditProfileModal onClose={handleProfileModal} toggle={istoggle} user={user} />
-      
       <div className='profile-conatiner' style={{ color: "white" }}>
         <div className='profile-background-image'>
           <img src={BackgroundImage} alt=""/>
@@ -39,7 +52,7 @@ function Profile() {
         <div className='proflie-title'>
           <span id='name' className='name'>{user.username}</span>
           <span id='username' className='username'>@{user.username}</span>
-          <span id='title' className='title'>React Developer</span>
+          <span id='title' className='title'>{ profileUser.bio}</span>
         </div>
         <div className='info-origin-user'>
           <div>
@@ -61,8 +74,10 @@ function Profile() {
             <span id="follow">Followers</span>
           </div>
         </div>
-      </div>
-    </>
+        </div>
+        <Tweet data={tweets} />
+      </>
+    
   )
 }
 

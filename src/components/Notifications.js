@@ -23,7 +23,7 @@ function Notifications() {
           </Link>
           <Link  className='tab-container' to=''>
             <div>
-              <spna>Mentions</spna>
+              <span>Mentions</span>
             </div>
           </Link>
         </div>

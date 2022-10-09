@@ -18,11 +18,13 @@ import { checkAuthenticated } from '../redux/asyncActions/UserAsync';
 import data from '@emoji-mart/data';
 import { Picker } from 'emoji-mart';
 import { removeMessage } from '../redux/slices/tweetSlice';
+import ClipLoader from "react-spinners/ClipLoader";
 // import "emoji-mart/css/emoji-mart.css";
 
 function Home() {
     const tweets = useSelector((state) => state.tweetReducer.tweets);
     const isAuthenticated = useSelector((state) => state.userReducer.isAuthenticated);
+    const isLoading = useSelector((state) => state.tweetReducer.isLoading);
     const textAreaRef = useRef(null);
     const [currentValue, setCurrentValue] = useState("");
     const [makeTweet, setMakeTweet] = useState({});
@@ -93,8 +95,18 @@ function Home() {
                             
                         </div>
                     </div>
-                </div>
-            <Tweet data={tweets} />
+            </div>
+            {
+                isLoading ?
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height:'100vh'
+                    }}>
+                        <ClipLoader color="blue" loading={isLoading} size={70}/>
+                    </div> : <Tweet data={tweets} />
+            }
             {
                 showEmoji && (
                     <Picker

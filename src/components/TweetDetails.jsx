@@ -15,10 +15,12 @@ import { useLocation } from 'react-router-dom';
 import { addComment, tweet_comments } from "../redux/asyncActions/CommentAsync";
 import Tweet from "./Tweet";
 import { likeTweet } from "../redux/asyncActions/TweetAsync";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const TweetDetails = () => {
     const textAreaRef = useRef(null);
     const commentList = useSelector(state => state.commentReducer.commentList);
+    const isLoading = useSelector((state) => state.commentReducer.isLoading);
     const [comment, setComment] = useState("");
     // const [comment, setComment] = useState("");
     const [likeCount, setLikeCount] = useState(0);
@@ -150,8 +152,19 @@ const TweetDetails = () => {
                 </div>
                 
             </div>
-        </div>
-        <Tweet data={commentList} />
+            </div>
+            {
+                isLoading ?
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        
+                    }}>
+                        <ClipLoader color="blue" loading={isLoading} size={70}/>
+                    </div> :
+                        <Tweet data={commentList} />
+            }
                         
         </>
     )
