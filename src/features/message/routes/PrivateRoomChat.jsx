@@ -6,6 +6,8 @@ import ReconnectingWebSocket from "reconnecting-websocket";
 import { addMessage } from "../../../redux/slices/ChatSlice";
 import { getChatMessage, loadMoreMessage } from "../../../redux/asyncActions/ChatAsync";
 import './PrivateRoomChat.css';
+import AddPicker from "../components/AddPicker";
+import { BiSend, BiUpArrowCircle } from "react-icons/bi";
 
 const PrivateRoomChat = () => {
     const [messageInput, setMessageInput] = useState("");
@@ -110,40 +112,65 @@ const PrivateRoomChat = () => {
 
     return (
         <div className="private-message-conatiner">
-            <div className="private-message-chat">
-                <div className="msg-chat">    
-                    chat message chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
+            <div className="messages-chat-box">
+                <div className="private-message-chat">
+                    <div className="msg-chat">    
+                        chat message chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                    </div>
+                </div>
+                <div className="private-message-chat">
+                    <div className="msg-chat">    
+                        chat message chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                        chat message
+                    </div>
                 </div>
             </div>
-            <div className="private-message-chat">
-                <div className="msg-chat">    
-                    chat message chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
-                    chat message
+            <div className="input-pivate-message-box">
+                <div className="private-message-input">
+                    <span className="chat-emoji">
+                        <AddPicker
+                            classNem="chat-emoji-class"
+                            position="up"
+                            setInput={setMessageInput}
+                        />
+                    </span>
+                    <div className="input-conatiner">
+                        <input
+                            type="text"
+                            value={messageInput}
+                            onChange={(e)=>setMessageInput(e.target.value)}
+                            placeholder="Start a new message"
+                            onKeyDown={EnterKey}
+                            onKeyDownCapture={isTyping}
+                            className="chat-input"
+                        />
+                    </div>
+                    <div className="send-icon-chat">
+                        <BiSend id="icon-send"/>
+                    </div>
                 </div>
-            </div>
-            <div className="private-message-input">
-                <input type="text" placeholder="input"/>
+
             </div>
         </div>
     )

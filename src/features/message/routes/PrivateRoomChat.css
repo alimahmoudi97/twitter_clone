@@ -1,25 +1,74 @@
 .private-message-conatiner{
-    position: relative;
-    /* width: 90em; */
-    height: 90%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellowgreen; */
+    height: 100%;
+}
+.messages-chat-box{
+    /* background-color: aqua; */
+    width: 100%;
+    /* height: 80%; */
+    flex: 15;
 }
 .private-message-chat{
-    display: flex;
-}
-.msg-chat{
-    background-color: burlywood;
-    max-width: 25em;
-    max-height: fit-content;
-    border-radius: 10px;
+    background-color: rgb(88, 86, 86);
     margin-top: 1em;
+    max-width: 40%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 1em;
 }
-.private-message-input{
-    position:fixed;
-    width:50%;
-    background-color: aqua;
-    bottom: 0;
+.msg-chat{
+    margin-left: 1em;
 }
-.private-message-input input{
-    /* width: 100%; */
+/*---------------input-----------------*/
+
+.input-pivate-message-box{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(88, 86, 86);
+}
+.private-message-input{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    border-radius: 10px;
+    border:0;
+    background-color: rgb(32, 35, 39);
+}
+.chat-emoji{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.input-conatiner{
+    flex: 7;
+}
+.input-conatiner input{
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    background-color: rgb(32, 35, 39);
+    border: 0;
+    outline: none;
+    color: white;
+}
+.send-icon-chat{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.send-icon-chat #icon-send{
+    width: 3em;
+    height: 3em;
+    color: rgb(29, 155, 240);
 }

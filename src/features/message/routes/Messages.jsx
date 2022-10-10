@@ -43,7 +43,7 @@ export const Messages = () => {
                         </div>
                     </div>
                 </div>
-                    <div className="message-user-info-container">
+                <div className="message-user-info-container">
                     <div className="message-user-avatar">
                         <img src={avatar} alt=""/>
                     </div>
@@ -59,7 +59,7 @@ export const Messages = () => {
                         </div>
                     </div>
                 </div>
-                    <div className="message-user-info-container">
+                <div className="message-user-info-container">
                     <div className="message-user-avatar">
                         <img src={avatar} alt=""/>
                     </div>

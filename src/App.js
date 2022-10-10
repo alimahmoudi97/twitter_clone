@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import React, { useState, useRef, useEffect } from 'react';
 import {useDispatch } from 'react-redux';
 import { removeMessage } from './redux/slices/tweetSlice';
+import PrivateRoomChat from './features/message/routes/PrivateRoomChat.jsx';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -36,26 +37,26 @@ function App() {
     }
     },[message])
   return (
-    // <>
-    //   <ToastContainer
-    //     autoClose={1000}
-    //   />
-    // <Routes>
-    //   <Route path='/' element={<Main />}>
-    //     <Route index element={<Home />}/>
-    //     <Route path="bookmarks" element={<Bookmarks/>} />
-    //     <Route path="communities" element={<Communities/>} />
-    //     <Route path="explore" element={<Explore/>} />
-    //     <Route path="messages" element={<Messages/>} />
-    //     <Route path="messages/w/:username" element={<PrivateRoomChat/>} />
-    //     <Route path="notifications" element={<Notifications/>} />
-    //     <Route path="profile" element={<Profile />} />
-    //     <Route path='tweetdetails' element={<TweetDetails />} />
-    //   </Route>
-    //   <Route path='/register' element={<Register/>} />
-    // </Routes>
-    // </>
-    <Messages/>
+    <>
+      <ToastContainer
+        autoClose={1000}
+      />
+    <Routes>
+      <Route path='/' element={<Main />}>
+        <Route index element={<Home />}/>
+        <Route path="bookmarks" element={<Bookmarks/>} />
+        <Route path="communities" element={<Communities/>} />
+        <Route path="explore" element={<Explore/>} />
+        <Route path="messages" element={<Messages/>} />
+        <Route path="messages/w/:username" element={<PrivateRoomChat/>} />
+        <Route path="notifications" element={<Notifications/>} />
+        <Route path="profile" element={<Profile />} />
+        <Route path='tweetdetails' element={<TweetDetails />} />
+      </Route>
+      <Route path='/register' element={<Register/>} />
+    </Routes>
+    </>
+    // <Messages/>
   );
 }
 

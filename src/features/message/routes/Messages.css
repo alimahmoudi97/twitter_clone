@@ -2,25 +2,29 @@
     display: flex;
     justify-content: center;
     flex-direction:row;
-    width: 100em;
+    width: 80em;
     height: 100vh;
+    position: relative;
     /* background-color: violet; */
 }
 .messages-users-container{
-    background-color: rgb(20, 43, 35);
+    /* background-color: rgb(20, 43, 35); */
+    border: 1px solid rgb(88, 86, 86);
     flex: 1;
 }
 .messages-user-chat-room{
-    background-color: rgb(68, 52, 31);
+    /* background-color: rgb(68, 52, 31); */
+    border: 1px solid rgb(88, 86, 86);
     flex: 2;
 }
 /*--------------header----------------*/
 .messages-user-header{
     display: flex;   
     flex-direction: column;
-    background-color: rgb(155, 75, 131);
+    /* background-color: rgb(155, 75, 131); */
     height: 5em;
     align-items: center;
+    border-bottom: 1px solid rgb(88, 86, 86);
 }
 .messages-user-title{
     flex:3;
@@ -30,7 +34,7 @@
     flex: 1;
     display: flex;
     justify-content:space-around;
-    background-color: brown;
+    /* background-color: brown; */
     cursor: pointer;
 }
 .messages-user-box{
@@ -41,16 +45,23 @@
 .messages-search input{
     height: 3em;
     width: 20em;
+    border: 1px solid rgb(88, 86, 86);
+    outline: none;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
 }
 /*-----------user message info-------*/
 .message-user-info-container{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    /* justify-content: space-around; */
     height: 5em;
-    background-color: bisque;
+    /* background-color: bisque; */
     cursor: pointer;
+    margin-top: 0.5em;
+}
+.message-user-info-container:hover{
+    background-color: rgb(88, 86, 86);
 }
 .message-user-avatar{
     height: 4em;
