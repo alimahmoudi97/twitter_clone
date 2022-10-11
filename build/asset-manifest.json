@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c028903a.css",
+    "main.js": "/static/js/main.dffe1fa4.js",
+    "static/js/787.f649083d.chunk.js": "/static/js/787.f649083d.chunk.js",
+    "static/media/lohp_en.png": "/static/media/lohp_en.ee316e0d2358e67d5ee2.png",
+    "static/media/profile-background.jpg": "/static/media/profile-background.0cff98c3fff9cfee3ea5.jpg",
+    "static/media/logo_register.svg": "/static/media/logo_register.7c1b316c745cd952baeaddc04495a1f3.svg",
+    "static/media/apple_logo.svg": "/static/media/apple_logo.403f21342e64f922acab9386fbfdc9f9.svg",
+    "index.html": "/index.html",
+    "main.c028903a.css.map": "/static/css/main.c028903a.css.map",
+    "main.dffe1fa4.js.map": "/static/js/main.dffe1fa4.js.map",
+    "787.f649083d.chunk.js.map": "/static/js/787.f649083d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c028903a.css",
+    "static/js/main.dffe1fa4.js"
+  ]
+}

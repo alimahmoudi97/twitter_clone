@@ -13,12 +13,13 @@ const PrivateRoomChat = () => {
     const [messageInput, setMessageInput] = useState("");
     const [isTyping, setIsTyping] = useState(null);
     const [typingUser, setTypingUser] = useState(null);
-    const { username } = useParams();
+    // const { username } = useParams();
+    const username = "otheroption";
     const userIn = useSelector((state) => state.userReducer);
     const [noScroll, setNoScroll] = useState(true);
     const dispatch = useDispatch();
     let endpoint = process.env.REACT_APP_WS_DOMAIN;
-    const me = userIn?.username;
+    const me = userIn?.user.username;
     const chatState = useSelector((state) => state.chatReducer);
     const chats = chatState.chatMessage;
     const meta = chatState.meta;
@@ -27,7 +28,7 @@ const PrivateRoomChat = () => {
     const messageDivRef = useRef(null);
 
     const client = new ReconnectingWebSocket(
-        endpoint + "ws/chat/" + username + "/" + "?token=" + userIn.access
+        "wss://twitterapis.herokuapp.com/ws/chat/" + username + "/" + "?token=" + localStorage.getItem("access")
     );
     
     useEffect(() => {
@@ -48,6 +49,7 @@ const PrivateRoomChat = () => {
                 if (data.command === "is_typing") {
                     setTypingUser(data.user);
                     setIsTyping(data.text);
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
                     timer = setTimeout(() => {
                         setIsTyping(null);
                     }, 500);
@@ -74,9 +76,6 @@ const PrivateRoomChat = () => {
     useEffect(() => {
         dispatch(getChatMessage(username));
     }, [dispatch, username]);
-    // setInterval(() => {
-    //     console.log(userIn.access);
-    // },100);
     const sendChat = (e) => {
         e.preventDefault();
         if (!messageInput) {
@@ -89,6 +88,7 @@ const PrivateRoomChat = () => {
                     username: me,
                 })
             );
+            console.log(messageInput);
         }
         setMessageInput("");
     };
@@ -166,7 +166,7 @@ const PrivateRoomChat = () => {
                             className="chat-input"
                         />
                     </div>
-                    <div className="send-icon-chat">
+                    <div onClick={sendChat} className="send-icon-chat">
                         <BiSend id="icon-send"/>
                     </div>
                 </div>
